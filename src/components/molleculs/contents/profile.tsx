@@ -3,7 +3,7 @@ import Link from "next/link";
 import LazyLoadImg from "@/components/atoms/img/lazyLoadImg";
 import clsxm from "@/lib/clsxm";
 import ThemeToggleBtn from "@/components/atoms/button/themeBtn";
-import Img from "@/components/static/images/image.png";
+import Img from "@/components/static/images/logo-blue.png";
 
 export interface ProfileProps {
   expand: boolean;

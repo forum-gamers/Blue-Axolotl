@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import useMobile from "@/hooks/useMobile";
 import useMenu from "@/hooks/useMenu";
 import { useEffect } from "react";
-import IMG from "@/components/static/images/image.png";
+import IMG from "@/components/static/images/logo-blue.png";
 import MobileMenuButton from "@/components/molleculs/button/mobileMenuBtn";
 import MobileSidebarMenu from "@/components/molleculs/menu/mobileSidebarMenu";
 import LazyLoadImg from "@/components/atoms/img/lazyLoadImg";

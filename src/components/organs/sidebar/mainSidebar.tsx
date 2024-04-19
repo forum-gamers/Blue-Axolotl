@@ -5,7 +5,7 @@ import SidebarProfile from "../header/sidebarProfile";
 import { SIDEBAR_MENU } from "@/constants/sidebar";
 import MenuItem from "@/components/molleculs/menu/menuItem";
 import LazyLoadImg from "@/components/atoms/img/lazyLoadImg";
-import B from "@/components/static/images/image.png";
+import B from "@/components/static/images/logo-blue.png";
 import ThemeToggleBtn from "@/components/atoms/button/themeBtn";
 import Copyright from "@/components/atoms/footer/copyright";
 
