@@ -46,7 +46,7 @@ export default function MenuItem({
 
   const components = () => (
     <div
-      className={`flex ${
+      className={`flex hover:dark:bg-d-xs-blue hover:bg-xs-blue ${
         !isHover
           ? "justify-center px-4 py-2 rounded-lg lg:rounded-full lg:p-2"
           : "lg:rounded-lg lg:py-2 lg:px-4 translate-x-4"

@@ -24,7 +24,7 @@ export default function LogoImg({
   return (
     <LazyLoadImg
       {...rest}
-      src={resolvedTheme === "light" ? BLUELOGO : WHITELOGO}
+      src={resolvedTheme === "light" ? WHITELOGO : BLUELOGO}
       alt="forum-gamers-logo"
       className={className}
       width={width}

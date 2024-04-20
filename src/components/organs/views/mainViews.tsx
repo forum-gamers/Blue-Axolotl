@@ -22,7 +22,7 @@ export default function MainViews({ readMode, children }: MainViewsProps) {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col justify-center bg-xl-blue dark:bg-d-xl-blue">
+      <div className="flex flex-col justify-center bg-xl-blue dark:bg-d-xl-blue h-full w-full">
         <header className="flex w-full flex-col justify-center lg:flex-row lg:gap-5 lg:hidden">
           {!readMode && <MobileHeader />}
         </header>
