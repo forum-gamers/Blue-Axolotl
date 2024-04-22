@@ -1,6 +1,5 @@
 "use client";
 
-import useMobile from "@/hooks/useMobile";
 import LOGO from "@/components/static/images/backdrop.webp";
 import LazyLoadImg from "@/components/atoms/img/lazyLoadImg";
 import Link from "next/link";
@@ -9,16 +8,17 @@ import ArrowBtn from "@/components/molleculs/button/arrowBtn";
 import ChatTabContent from "@/components/molleculs/contents/chatTabContent";
 
 export default function ChatViews() {
-  const isMobile = useMobile();
   const { toggleChat, isOpen } = useChat();
 
   return (
     <section
-      className={`fixed bottom-0 z-10 bg-xs-blue rounded-t-2xl transition-all duration-500 px-2 ${
-        isMobile ? "right-0" : `right-8 w-80 ${isOpen ? "h-[85%]" : "h-10"}`
-      }`}
+      className={`fixed bottom-0 z-10 bg-xs-blue dark:bg-d-xs-blue rounded-t-2xl transition-all duration-500 px-2 right-2 lg:right-8 w-60 lg:w-80 
+         overflow-y-scroll no-scrollbar scroll-smooth ${
+           isOpen ? "h-[45%] lg:h-[85%]" : "h-10"
+         }
+      `}
     >
-      <header className="flex justify-between mx-auto z-20 items-center px-3 py-2">
+      <header className="flex justify-between mx-auto z-20 items-baseline lg:items-center px-3 py-2">
         <Link href={"/"} prefetch passHref className="flex flex-row gap-2">
           <LazyLoadImg
             src={LOGO}
@@ -27,7 +27,7 @@ export default function ChatViews() {
             height={45}
             className="rounded-full object-cover object-center"
           />
-          <h1 className="dark:text-d-xs-blue text-xs-blue font-sora mt-1 text-sm">
+          <h1 className="text-d-xs-blue dark:text-xs-blue font-sora mt-1 text-sm">
             Name
           </h1>
         </Link>

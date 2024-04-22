@@ -14,7 +14,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="fixed bottom-0 left-0 top-0 z-30 hidden w-16 flex-col bg-lg-blue dark:bg-d-lg-blue items-center justify-between overflow-hidden rounded-r-2xl px-2 py-4 shadow-sm-blue transition-all duration-500 hover:w-64 hover:items-stretch hover:p-4 hover:transition-all hover:duration-500 dark:shadow-d-xs-blue lg:flex"
+      className="fixed bottom-0 left-0 top-0 z-30 hidden w-16 flex-col bg-gradient-to-bl lg:from-lg-blue bg-lg-blue to-xl-blue dark:from-d-lg-blue lg:dark:bg-d-lg-blue dark:to-d-xl-blue items-center justify-between overflow-hidden rounded-r-2xl px-2 py-4 shadow-sm-blue transition-all duration-500 hover:w-64 hover:items-stretch hover:p-4 hover:transition-all hover:duration-500 dark:shadow-d-xs-blue lg:flex"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >

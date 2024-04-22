@@ -8,14 +8,9 @@ import Sidebar from "../sidebar/mainSidebar";
 import MobileHeader from "../header/mobileHeader";
 import MainFooter from "@/components/atoms/footer/mainFooter";
 import dynamic from "next/dynamic";
-import InfinitySpin from "@/components/atoms/loaders/infinitySpin";
 const ChatViews = dynamic(() => import("./chatViews"), {
   ssr: false,
-  loading: () => (
-    <div className="bottom-0 right-0">
-      <InfinitySpin />
-    </div>
-  ),
+  loading: () => <div style={{ bottom: "0", right: "0" }}>Loading...</div>,
 });
 
 export interface MainViewsProps extends ChildrenProps {
@@ -40,7 +35,7 @@ export default function MainViews({ readMode, children }: MainViewsProps) {
           {children}
         </main>
         {!readMode && <Sidebar />}
-        <aside className="flex w-full justify-between">
+        <aside className="flex w-full justify-between z-10">
           <Suspense>
             <ChatViews />
           </Suspense>
