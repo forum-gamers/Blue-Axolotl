@@ -4,6 +4,7 @@ import LOGO from "@/components/static/images/logo-blue.png";
 import Link from "next/link";
 import ThemeToggleBtn from "@/components/atoms/button/themeBtn";
 import ProfileBtn from "@/components/molleculs/button/profileBtn";
+import ChangeLangBtn from "@/components/molleculs/button/changLangBtn";
 
 export default function BlogNavbar() {
   return (
@@ -45,6 +46,7 @@ export default function BlogNavbar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <ThemeToggleBtn />
+            <ChangeLangBtn />
 
             <ProfileBtn />
           </div>
