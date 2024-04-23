@@ -49,7 +49,7 @@ export default function useScroll({
     if (ref.current) observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, [data]);
+  }, [data, fetchLimit, handler, params]);
 
   return {
     pending,

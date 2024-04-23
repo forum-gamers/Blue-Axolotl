@@ -1,5 +1,5 @@
 import type { SidebarMenu } from "@/interfaces/components";
-import { BiHomeSmile } from "@/components/atoms/icons/bi";
+import { BiHomeSmile, BiEditAlt } from "@/components/atoms/icons/bi";
 import { GiChampions } from "@/components/atoms/icons/gi";
 import { AiOutlineTeam } from "@/components/atoms/icons/ai";
 import { IoIosSearch } from "@/components/atoms/icons/io";
@@ -15,6 +15,12 @@ export const SIDEBAR_MENU: SidebarMenu[] = [
     title: "Search",
     href: "/explore",
     icon: <IoIosSearch size={20} />,
+    isExternal: false,
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+    icon: <BiEditAlt size={20} />,
     isExternal: false,
   },
   {

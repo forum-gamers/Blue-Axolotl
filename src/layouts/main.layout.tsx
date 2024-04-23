@@ -1,5 +1,5 @@
 import Loading from "@/components/atoms/loaders/pageLoader";
-import type { ChildrenProps } from "@/interfaces";
+import type { ChildrenProps, Language } from "@/interfaces";
 import { soraSans } from "@/lib/font";
 import { Suspense } from "react";
 import TopLoader from "nextjs-toploader";
@@ -7,10 +7,29 @@ import AppThemeProvider from "@/providers/appTheme.provider";
 import { VercelAnalytics } from "@/providers/vercelAnalytics.providers";
 import { VercelSpeedInsight } from "@/providers/vercelSpeedInsight.provider";
 import "@/styles/globals.css";
+import "aos/dist/aos.css";
 
-export default function MainLayout({ children }: ChildrenProps) {
+export interface MainLayoutProps extends ChildrenProps {
+  lang?: Language;
+}
+
+export default function MainLayout({ children, lang }: MainLayoutProps) {
+  const language = (() => {
+    switch (lang) {
+      case "id-ID":
+        return "id";
+      case "en-US":
+      default:
+        return "en";
+    }
+  })();
+
   return (
-    <html lang="en" suppressHydrationWarning suppressContentEditableWarning>
+    <html
+      lang={language}
+      suppressHydrationWarning
+      suppressContentEditableWarning
+    >
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <title>Forum Gamers</title>

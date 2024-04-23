@@ -156,7 +156,11 @@ export default function ChatScroll() {
     return data as any;
   };
 
-  const { data, pending, ref } = useScroll({ initialState, handler });
+  const { data, pending, ref } = useScroll({
+    initialState,
+    handler,
+    fetchLimit: 10,
+  });
 
   return !!data.length ? (
     <section id="chat-list" className="flex flex-col space-y-2 my-2">
