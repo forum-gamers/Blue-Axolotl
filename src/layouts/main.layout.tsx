@@ -34,7 +34,7 @@ export default function MainLayout({ children, lang }: MainLayoutProps) {
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <title>Forum Gamers</title>
       </head>
-      <body className={soraSans.className}>
+      <body className={`${soraSans.className} bg-xl-blue dark:bg-d-xl-blue`}>
         <Suspense fallback={<Loading />}>
           <TopLoader
             color="#05b6d3"
