@@ -6,15 +6,16 @@ export function middleware(request: NextRequest) {
   switch (true) {
     case isStartWith(request, "/blog"): {
       const { pathname } = request.nextUrl;
+
       const pathnameHasLocale = LANGUAGE.some(
-        (locale) =>
-          pathname.startsWith(`/blog/${locale}/`) ||
-          pathname === `/blog/${locale}`
+        (locale) => locale === pathname.split("/")[2]
       );
 
       if (pathnameHasLocale) return;
 
-      request.nextUrl.pathname = `${pathname}/en-US`;
+      const url = pathname.split("/");
+      url[2] = "en-US";
+      request.nextUrl.pathname = url.join("/");
       return NextResponse.redirect(request.nextUrl);
     }
     default:

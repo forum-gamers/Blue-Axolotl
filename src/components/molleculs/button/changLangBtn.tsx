@@ -23,7 +23,7 @@ export default function ChangeLangBtn() {
     <dialog
       onMouseLeave={() => setHover(false)}
       style={{ zIndex: "9999" }}
-      className="flex no-scrollbar scroll-smooth relative h-20 w-40 rounded-xl flex-col bg-xl-blue dark:bg-d-xl-blue my-0 py-1 px-1 text-gray-800 shadow-xl overflow-x-scroll overflow-y-visible origin-top-right bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+      className="flex no-scrollbar scroll-smooth relative h-20 w-40 rounded-xl flex-col py-1 px-1 text-gray-800 shadow-xl overflow-x-scroll overflow-y-visible origin-top-right bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
     >
       {LANGUAGE.map((el) => (
         <Link
@@ -31,7 +31,7 @@ export default function ChangeLangBtn() {
           href={generateUrl(el)}
           prefetch
           style={{ zIndex: "9999" }}
-          className="my-2 border-b-2 px-4 border-gray-100 font-semibold text-neutral-800 dark:text-neutral-300 hover:text-neutral-950 hover:dark:text-neutral-400"
+          className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
         >
           {el}
         </Link>
