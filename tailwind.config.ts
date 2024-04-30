@@ -84,6 +84,11 @@ const config: Config = {
       "md-blue": "#8AAEE0",
       "lg-blue": "#638ECB",
       "xl-blue": "#395886",
+      "d-t-color": "rgb(212 212 212)",
+      "t-color": "rgb(38 38 38)",
+    },
+    fontFamily: {
+      "roboto-condensed": ["var(--robotoCondensed-fon)"],
     },
   },
   plugins: [],

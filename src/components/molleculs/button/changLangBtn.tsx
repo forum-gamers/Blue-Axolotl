@@ -44,7 +44,7 @@ export default function ChangeLangBtn() {
       className="rounded-xl p-2 bg-white dark:bg-neutral-800"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3, delay: 0.3 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
       onClick={() => setHover(!hover)}
     >
       <IoLanguage />

@@ -1,6 +1,5 @@
 import { LANGUAGE } from "@/constants";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   switch (true) {
@@ -17,6 +16,14 @@ export function middleware(request: NextRequest) {
       url[2] = "en-US";
       request.nextUrl.pathname = url.join("/");
       return NextResponse.redirect(request.nextUrl);
+    }
+    case !isStartWith(request, "/blog"): {
+      //TODO utk sementara,selagi halaman dynamic nya blm beres
+      if (process.env.NODE_ENV === "production") {
+        request.nextUrl.pathname = "/blog/en-US";
+        return NextResponse.redirect(request.nextUrl);
+      }
+      return NextResponse.next();
     }
     default:
       return NextResponse.next();

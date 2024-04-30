@@ -20,7 +20,6 @@ export default function ModalInput({
       <div className="flex flex-row justify-evenly gap-1 items-center m-4">
         <BsLayoutTextWindow size={20} />
         <div
-          // placeholder={placeHolder}
           className={`w-full rounded-md m-1 text-opacity-35 flex justify-start items-center cursor-default px-2 ${className}`}
           onClick={() => setOpen(!open)}
         >

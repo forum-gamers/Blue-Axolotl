@@ -40,6 +40,7 @@ export const defaultComponent: Partial<PortableTextReactComponents> = {
         alt="pic"
         width={isInline ? 100 : 800}
         height={isInline ? 100 : 800}
+        className="rounded-md animate-enter-left"
         {...value}
       />
     ),
@@ -47,32 +48,32 @@ export const defaultComponent: Partial<PortableTextReactComponents> = {
   block: {
     h1: ({ children, ...rest }) => (
       <h1
-        className="pt-4 text-[18px] font-medium leading-snug dark:text-neutral-300"
+        className="pt-4 text-[18px] text-t-color font-medium leading-snug dark:text-d-t-color"
         {...rest}
       >
         {children}
       </h1>
     ),
     normal: ({ children }) => (
-      <p className="dark:text-neutral-300 font-sora text-neutral-800 space-y-1">
+      <p className="dark:text-d-t-color text-t-color font-sora space-y-1">
         {children}
       </p>
     ),
     h2: ({ children, ...rest }) => (
       <h2
-        className="font-sans text-xl font-medium dark:text-neutral-300"
+        className="font-sans pb-2 text-xl font-medium dark:text-d-t-color text-t-color"
         {...rest}
       >
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="pt-4 text-[18px] font-medium leading-snug dark:text-neutral-300">
+      <h3 className="pt-4 pb-2 text-[18px] font-bold text-t-color leading-snug dark:text-d-t-color">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="pt-4 text-[18px] font-medium leading-snug dark:text-neutral-300">
+      <h4 className="pt-4 pb-2 text-[18px] font-medium leading-snug dark:text-d-t-color text-t-color">
         {children}
       </h4>
     ),

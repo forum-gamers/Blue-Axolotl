@@ -1,3 +1,4 @@
+import { SUPPORTEDGAME } from "@/constants/game";
 import type { Language } from "@/interfaces";
 import type { SupportedGame } from "@/interfaces/blog";
 import type { SanityPostResponse } from "@/interfaces/sanity";
@@ -79,3 +80,34 @@ const imgLoader = SanityImg(client);
 
 export const loadSanityImg = (source: SanityImageSource) =>
   imgLoader.image(source);
+
+export const getAllBlog = async ({
+  page = 1,
+  limit = 20,
+}: {
+  page?: number;
+  limit?: number;
+}) => {
+  const { signal } = new AbortController();
+  return await client.fetch<
+    (SanityPostResponse & {
+      lang: Language;
+      game: string;
+      authorName: string;
+    })[]
+  >(
+    `*[
+    _type == 'post' &&
+    count(categories[_ref in *[_type == 'category' && title in ['en-US','id-ID'] ]._id]) > 0
+  ] {
+    'lang': *[_type == 'category' && title in ['en-US','id-ID'] && ^.categories[0]._ref == _id][0].title,
+    'game': *[_type == 'category' && title in [${SUPPORTEDGAME.map(
+      (el) => `'${el.replaceAll("-", " ").split(", ")}'`
+    )}] ][0].title,
+    'authorName': *[_type == 'author' && _id == ^.author._ref][0].name,
+    ...
+  } | order(_createdAt) [${page - 1}...${page * limit}]`,
+    {},
+    { signal }
+  );
+};

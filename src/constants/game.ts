@@ -1,8 +1,4 @@
 import type { SupportedGame } from "@/interfaces/blog";
-import type { StaticImageData } from "next/image";
-import ML from "@/components/static/images/mobile-legend.jpg";
-import CSGO from "@/components/static/images/csgo.jpeg";
-import VALO from "@/components/static/images/valo.jpg";
 
 export const SUPPORTEDGAME: SupportedGame[] = [
   "csgo",
@@ -10,8 +6,9 @@ export const SUPPORTEDGAME: SupportedGame[] = [
   "valorant",
 ];
 
-export const GAMEIMAGE: Record<SupportedGame, string | StaticImageData> = {
-  "mobile-legend": ML,
-  csgo: CSGO,
-  valorant: VALO,
+export const GAMEIMAGE: Record<SupportedGame, string> = {
+  "mobile-legend":
+    "https://ik.imagekit.io/vohc8tq4da/fe/ml.jpg?updatedAt=1714381616361",
+  csgo: "https://ik.imagekit.io/vohc8tq4da/fe/20220408134900-624fdadcf3c5d-csgo-prime-accounts.jpg?updatedAt=1714382191731",
+  valorant: "https://ik.imagekit.io/vohc8tq4da/fe/valo?updatedAt=1714382132510",
 };
