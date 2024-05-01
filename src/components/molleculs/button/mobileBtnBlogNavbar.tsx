@@ -1,7 +1,24 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
+
 export default function MobileBtnBlogNavbar() {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const navigations = [{ href: "/", title: "Home" }];
+
+  if (false)
+    navigations.push(
+      { href: "/login", title: "Login" },
+      { href: "/register", title: "Register" }
+    );
+
   return (
     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
       <button
+        onClick={() => setOpen(!open)}
         type="button"
         className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
         aria-controls="mobile-menu"
@@ -40,6 +57,22 @@ export default function MobileBtnBlogNavbar() {
           />
         </svg>
       </button>
+      <AnimatePresence>
+        {open && (
+          <nav className="flex flex-col space-y-2 mt-20 fixed z-50 w-40 items-center border rounded-md border-sm-blue dark:border-d-sm-blue bg-base-blue dark:bg-d-base-blue">
+            {navigations.map((el) => (
+              <Link
+                key={el.title}
+                href={el.href}
+                prefetch
+                className="text-sm font-medium cursor-pointer hover:!text-opacity-50 h-6 flex items-center"
+              >
+                {el.title}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

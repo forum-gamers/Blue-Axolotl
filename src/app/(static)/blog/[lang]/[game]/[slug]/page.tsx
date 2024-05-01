@@ -6,10 +6,13 @@ import { getAllBlog, getBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import type { Metadata } from "next";
+import { LANGUAGE } from "@/constants";
 
 export default async function Page({
   params: { lang, game, slug },
 }: BlogPageProps) {
+  if (!LANGUAGE.includes(lang)) notFound();
+
   const post = await getBySlug(lang, game, slug);
   if (!post) notFound();
 

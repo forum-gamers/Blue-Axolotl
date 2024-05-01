@@ -18,7 +18,7 @@ export default async function Page({ params: { lang } }: BlogPageProps) {
         {Object.keys(GAMEIMAGE).map((el) => (
           <Link prefetch passHref href={`/blog/${lang}/${el}`} key={el}>
             <GameBlogCard
-              title={el}
+              title={el.replaceAll("-", " ")}
               game={el as SupportedGame}
               src={GAMEIMAGE[el as SupportedGame]}
             />

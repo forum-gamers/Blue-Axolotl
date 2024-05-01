@@ -5,7 +5,7 @@ export type BlogPageProps<searchParams = Record<string, string>> = {
   searchParams?: searchParams;
 };
 
-export type SupportedGame = "mobile-legend" | "csgo" | "valorant";
+export type SupportedGame = "mobile-legend" | "csgo" | "valorant" | "pubg";
 
 export interface BlogParams {
   lang: Language;

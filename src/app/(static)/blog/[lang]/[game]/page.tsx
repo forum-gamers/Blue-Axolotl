@@ -11,8 +11,11 @@ import { getContentListPerGame } from "@/lib/sanity";
 import { loadSanityImg } from "@/lib/sanity";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function Page({ params: { lang, game } }: BlogPageProps) {
+  if (!LANGUAGE.includes(lang)) notFound();
+
   const datas = await getContentListPerGame(lang, game);
 
   return (
@@ -35,6 +38,9 @@ export default async function Page({ params: { lang, game } }: BlogPageProps) {
                   .width(500)
                   .url()}
                 game={game}
+                desc={
+                  el.body.find((el) => el.style === "normal")?.children[0].text
+                }
               />
             </Link>
           ))}

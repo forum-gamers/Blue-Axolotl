@@ -7,11 +7,20 @@ export interface GameBlogCardProps {
   game: SupportedGame;
   src: string | StaticImageData;
   title: string;
+  desc?: string;
 }
 
-export default function GameBlogCard({ game, src, title }: GameBlogCardProps) {
+export default function GameBlogCard({
+  game,
+  src,
+  title,
+  desc,
+}: GameBlogCardProps) {
   return (
-    <AnimateCard className="relative cursor-pointer bg-lg-blue dark:bg-d-lg-blue border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-800 hover:scale-[102%]">
+    <AnimateCard
+      as="article"
+      className="relative cursor-pointer bg-lg-blue dark:bg-d-lg-blue border border-xs-blue dark:border-d-xs-blue hover:scale-[102%]"
+    >
       <LazyLoadImg
         src={src}
         alt={`${game} img`}
@@ -19,9 +28,16 @@ export default function GameBlogCard({ game, src, title }: GameBlogCardProps) {
         height={200}
         className="h-48 rounded-t-xl mx-auto object-cover lg:object-left object-center"
       />
-      <h1 className="font-sora px-4 py-1 cursor-pointer rounded-b-xl text-lg text-neutral-700 transition-all duration-300 dark:text-neutral-300 dark:hover:text-teal-400 lg:hover:text-teal-800">
-        {title}
-      </h1>
+      <hgroup className="font-sora px-2 py-2">
+        <h2 className="cursor-pointer capitalize text-xl text-t-color transition-all duration-300 dark:text-d-t-color dark:hover:text-teal-400 lg:hover:text-teal-800">
+          {title}
+        </h2>
+        {!!desc && (
+          <p className="text-sm leading-relaxed text-t-color dark:text-d-t-color">
+            {desc.slice(0, 70) + (desc.length > 70 ? "..." : "")}
+          </p>
+        )}
+      </hgroup>
     </AnimateCard>
   );
 }
