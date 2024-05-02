@@ -14,7 +14,7 @@ export default function ChangeLangBtn() {
 
   const generateUrl = (lang: Language) => {
     const urls = pathname.split("/");
-    urls[2] = lang;
+    urls[1] = lang;
 
     return urls.join("/");
   };

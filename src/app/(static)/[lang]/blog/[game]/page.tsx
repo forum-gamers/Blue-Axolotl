@@ -28,7 +28,7 @@ export default async function Page({ params: { lang, game } }: BlogPageProps) {
             <Link
               prefetch
               passHref
-              href={`/blog/${lang}/${game}/${el.slug.current}`}
+              href={`/${lang}/blog/${game}/${el.slug.current}`}
               key={el._id}
             >
               <GameBlogCard
@@ -115,10 +115,10 @@ export function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${domain}/blog/en-US/${game}`,
+      canonical: `${domain}/en-US/blog/${game}`,
       languages: {
-        id: `${domain}/blog/id-ID/${game}`,
-        en: `${domain}/blog/en-US/${game}`,
+        id: `${domain}/id-ID/blog/${game}`,
+        en: `${domain}/en-US/blog/${game}`,
       },
     },
   };

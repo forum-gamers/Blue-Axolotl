@@ -13,14 +13,14 @@ export function middleware(request: NextRequest) {
       if (pathnameHasLocale) return;
 
       const url = pathname.split("/");
-      url[2] = "en-US";
+      url[1] = "en-US";
       request.nextUrl.pathname = url.join("/");
       return NextResponse.redirect(request.nextUrl);
     }
     case !isStartWith(request, "/blog"): {
       //TODO utk sementara,selagi halaman dynamic nya blm beres
       if (process.env.NODE_ENV === "production") {
-        request.nextUrl.pathname = "/blog/en-US";
+        request.nextUrl.pathname = "/en-US/blog";
         return NextResponse.redirect(request.nextUrl);
       }
       return NextResponse.next();

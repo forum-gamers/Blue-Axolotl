@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   LANGUAGE.forEach((lang) => {
     SUPPORTEDGAME.forEach((game) => {
       result.push({
-        url: `${domain}/blog/${lang}/${game}`,
+        url: `${domain}/${lang}/blog/${game}`,
         lastModified: new Date(),
         changeFrequency: "daily",
         priority: 1,

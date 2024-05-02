@@ -11,7 +11,7 @@ export default function BlogFooter() {
       <BlogFooterImg />
       <div className="lg:col-span-3 flex flex-col lg:flex-row justify-evenly space-y-4 lg:space-y-0">
         <nav className="pt-1 pb-0 lg:pt-4 flex flex-col space-y-1 lg:space-y-2">
-          <h6 className="text-lg font-bold antialiased cursor-default">
+          <h6 className="text-lg font-bold antialiased cursor-default underline underline-offset-4">
             Services
           </h6>
           {["Post", "Tournament", "Create Team"].map((el) => (
@@ -26,7 +26,7 @@ export default function BlogFooter() {
           ))}
         </nav>
         <nav className="pt-1 pb-0 lg:pt-4 space-y-1 lg:space-y-2 flex flex-col">
-          <h6 className="text-lg font-bold antialiased cursor-default">
+          <h6 className="text-lg font-bold antialiased cursor-default underline underline-offset-4">
             Company
           </h6>
           {["About", "Contact"].map((el) => (
@@ -41,7 +41,7 @@ export default function BlogFooter() {
           ))}
         </nav>
         <nav className="pt-1 pb-0 lg:pt-4 space-y-1 lg:space-y-2 flex flex-col">
-          <h6 className="text-lg font-bold antialiased cursor-default">
+          <h6 className="text-lg font-bold antialiased cursor-default underline underline-offset-4">
             Find us
           </h6>
           {SOCIALMEDIA.map((el) => (

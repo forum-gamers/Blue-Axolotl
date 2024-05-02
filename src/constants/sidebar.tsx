@@ -19,7 +19,7 @@ export const SIDEBAR_MENU: SidebarMenu[] = [
   },
   {
     title: "Blog",
-    href: "/blog",
+    href: "/en-US/blog",
     icon: <BiEditAlt size={20} />,
     isExternal: false,
   },

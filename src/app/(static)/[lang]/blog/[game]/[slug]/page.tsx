@@ -74,7 +74,7 @@ export function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${domain}/blog/${lang}/${game}/${slug}`,
+      canonical: `${domain}/${lang}/blog/${game}/${slug}`,
     },
   };
 }

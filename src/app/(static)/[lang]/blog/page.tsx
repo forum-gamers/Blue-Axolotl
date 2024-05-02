@@ -16,7 +16,7 @@ export default async function Page({ params: { lang } }: BlogPageProps) {
       <PageHeading title="Our Blog" />
       <section className="grid gap-6 pt-2 sm:grid-cols-2 h-[26rem] overflow-x-visible overflow-y-scroll no-scrollbar">
         {Object.keys(GAMEIMAGE).map((el) => (
-          <Link prefetch passHref href={`/blog/${lang}/${el}`} key={el}>
+          <Link prefetch passHref href={`/${lang}/blog/${el}`} key={el}>
             <GameBlogCard
               title={el.replaceAll("-", " ")}
               game={el as SupportedGame}
@@ -88,10 +88,10 @@ export function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${domain}/blog/en-US`,
+      canonical: `${domain}/en-US/blog`,
       languages: {
-        id: `${domain}/blog/id-ID`,
-        en: `${domain}/blog/en-US`,
+        id: `${domain}/id-ID/blog`,
+        en: `${domain}/en-US/blog`,
       },
     },
   };
