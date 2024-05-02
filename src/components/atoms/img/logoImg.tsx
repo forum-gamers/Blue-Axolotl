@@ -6,7 +6,7 @@ import BLUELOGO from "@/components/static/images/logo-blue.png";
 import LazyLoadImg from "./lazyLoadImg";
 
 export interface LogoImgProps {
-  className: string;
+  className?: string;
   rounded?: string;
   width: number;
   height: number;

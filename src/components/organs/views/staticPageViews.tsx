@@ -1,9 +1,9 @@
 import type { ChildrenProps } from "@/interfaces";
 import InitPage from "../hoc/initPage";
 import { Suspense } from "react";
-import MainFooter from "@/components/atoms/footer/mainFooter";
 import Loading from "@/components/atoms/loaders/pageLoader";
 import BlogNavbar from "../navbar/blogNavbar";
+import BlogFooter from "../footer/blogFooter";
 
 export default function StaticViews({ children }: ChildrenProps) {
   return (
@@ -13,7 +13,7 @@ export default function StaticViews({ children }: ChildrenProps) {
         <main className="flex flex-col justify-center h-full w-full no-scrollbar scroll-smooth transition-all duration-300 lg:ml-72 lg:max-w-[854px]">
           {children}
         </main>
-        <MainFooter />
+        <BlogFooter />
       </Suspense>
     </InitPage>
   );
