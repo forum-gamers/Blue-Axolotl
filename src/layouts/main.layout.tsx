@@ -6,6 +6,7 @@ import TopLoader from "nextjs-toploader";
 import AppThemeProvider from "@/providers/appTheme.provider";
 import { VercelAnalytics } from "@/providers/vercelAnalytics.providers";
 import { VercelSpeedInsight } from "@/providers/vercelSpeedInsight.provider";
+import Head from "next/head";
 import "@/styles/globals.css";
 import "aos/dist/aos.css";
 
@@ -30,10 +31,10 @@ export default function MainLayout({ children, lang }: MainLayoutProps) {
       suppressHydrationWarning
       suppressContentEditableWarning
     >
-      <head>
+      <Head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <title>Forum Gamers</title>
-      </head>
+      </Head>
       <body className={`${soraSans.className} bg-xl-blue dark:bg-d-xl-blue`}>
         <Suspense fallback={<Loading />}>
           <TopLoader
