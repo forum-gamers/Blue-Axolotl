@@ -12,7 +12,7 @@ export default function Container({
   children,
   className = "",
   withMarginTop = true,
-  as = "div",
+  as: ContainerTag = "div",
   readMode,
   ...rest
 }: ContainerProps) {
@@ -20,25 +20,9 @@ export default function Container({
     (readMode || withMarginTop) && "mt-6"
   } p-4 md:p-8 lg:pr-0 ${className}`;
 
-  switch (as) {
-    case "main":
-      return (
-        <main data-testid="container" className={classname} {...rest}>
-          {children}
-        </main>
-      );
-    case "section":
-      return (
-        <section data-testid="container" className={classname} {...rest}>
-          {children}
-        </section>
-      );
-    case "div":
-    default:
-      return (
-        <div data-testid="container" className={classname} {...rest}>
-          {children}
-        </div>
-      );
-  }
+  return (
+    <ContainerTag data-testid="container" className={classname} {...rest}>
+      {children}
+    </ContainerTag>
+  );
 }
