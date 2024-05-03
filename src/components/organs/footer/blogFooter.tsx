@@ -7,7 +7,7 @@ export default function BlogFooter() {
   return (
     <footer
       id="blog-footer"
-      className="w-full font-sora bottom-0 relative mx-auto lg:h-40 px-12 mt-4 pb-4 rounded-t-xl bg-lg-blue dark:bg-d-lg-blue grid grid-cols-1 lg:grid-cols-4 lg:gap-6 items-center space-y-4 lg:space-y-0"
+      className="w-full font-sora bottom-0 relative lg:absolute mx-auto lg:h-40 px-12 mt-4 pb-4 rounded-t-xl bg-lg-blue dark:bg-d-lg-blue grid grid-cols-1 lg:grid-cols-4 lg:gap-6 items-center space-y-4 lg:space-y-0"
     >
       <BlogFooterImg />
       <section className="lg:col-span-3 flex flex-col lg:flex-row justify-evenly space-y-4 lg:space-y-0">

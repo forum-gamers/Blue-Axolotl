@@ -1,6 +1,6 @@
 export default function MainFooter() {
   return (
-    <footer className="w-full h-[5%] bottom-0 relative">
+    <footer className="w-full h-[3%] bottom-0 absolute flex flex-start md:justify-center">
       <h1
         color="blue-gray"
         className="text-center text-lg text-neutral-800 dark:text-neutral-300 font-sora"
