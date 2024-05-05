@@ -1,10 +1,12 @@
 import Container from "@/components/atoms/contents/container";
-import CreatePost from "@/components/organs/form/createPost";
+import ModalCreatePost from "@/components/modals/ModalCreatePost";
 
 export default function Page() {
   return (
     <Container data-aos="fade-left">
-      <CreatePost />
+      <div className="w-full flex justify-center lg:justify-start">
+        <ModalCreatePost />
+      </div>
     </Container>
   );
 }

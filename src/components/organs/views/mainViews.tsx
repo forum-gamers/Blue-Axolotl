@@ -19,11 +19,11 @@ export default function MainViews({ readMode, children }: MainViewsProps) {
   return (
     <InitPage>
       <Suspense fallback={<Loading />}>
-        <div className="flex flex-col justify-center bg-xl-blue dark:bg-d-xl-blue h-full w-full">
+        <div className="flex flex-col justify-center bg-xl-blue dark:bg-d-xl-blue h-full w-full overflow-hidden">
           <header className="flex w-full flex-col justify-center lg:flex-row lg:gap-5 lg:hidden">
             {!readMode && <MobileHeader />}
           </header>
-          <main className="no-scrollbar w-full scroll-smooth transition-all duration-300 lg:ml-72 lg:min-h-screen lg:max-w-[854px]">
+          <main className="no-scrollbar w-full scroll-smooth transition-all duration-300 lg:ml-72 lg:min-h-screen lg:max-w-[854px] flex-1">
             {children}
           </main>
           {!readMode && <Sidebar />}

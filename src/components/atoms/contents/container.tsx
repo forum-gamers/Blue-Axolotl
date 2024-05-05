@@ -18,7 +18,7 @@ export default function Container({
 }: ContainerProps) {
   const classname = `mb-10 ${
     (readMode || withMarginTop) && "mt-6"
-  } p-4 md:p-8 lg:pr-0 ${className}`;
+  } p-4 md:p-8 lg:pr-0 ${className}max-w-screen aos-init aos-animate`;
 
   return (
     <ContainerTag data-testid="container" className={classname} {...rest}>
