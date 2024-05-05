@@ -11,3 +11,5 @@ export default function RegisterPage() {
     </Container>
   );
 }
+
+export const dynamic = "force-static";

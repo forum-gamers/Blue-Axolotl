@@ -11,3 +11,5 @@ export default function LoginPage() {
     </Container>
   );
 }
+
+export const dynamic = "force-static";
