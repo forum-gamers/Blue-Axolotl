@@ -23,7 +23,7 @@ export default function BlogNavbar() {
                 >
                   Home
                 </Link>
-                {false && (
+                {true && (
                   <>
                     <Link
                       href="/"

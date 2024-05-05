@@ -10,7 +10,7 @@ export default function StaticViews({ children }: ChildrenProps) {
     <InitPage>
       <Suspense fallback={<Loading />}>
         <BlogNavbar />
-        <main className="flex flex-col justify-center h-full w-full no-scrollbar scroll-smooth transition-all duration-300 lg:ml-72 lg:max-w-[854px]">
+        <main className="flex flex-col justify-center h-full w-full no-scrollbar scroll-smooth transition-all duration-300 mx:auto ">
           {children}
         </main>
         <BlogFooter />
