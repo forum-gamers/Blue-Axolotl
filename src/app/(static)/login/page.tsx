@@ -10,15 +10,19 @@ export default function LoginPage() {
     const { data, errors } = await Mutate({
       mutation: loginMutaion,
       variables: {
-        login: { email, password },
+        payload: { email, password, as: "Professional" },
       },
     });
     if (data) {
-      console.log(data, "<~ this is data");
+      console.log(data);
     }
+
     if (errors && errors.length) {
-      console.log(errors, "<~ this is error");
+      let errorMessage = errors[0].message.split("\n")[0];
+      console.log(errors);
+      return { message: errorMessage };
     }
+    return { message: "success" };
   };
   return (
     <Container className="min-h-[90%]" as="section">

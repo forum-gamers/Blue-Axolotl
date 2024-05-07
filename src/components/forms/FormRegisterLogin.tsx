@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CustomError } from "@/interfaces/customError";
 import {
   accountType,
   loginRegisterSchema,
@@ -34,6 +35,7 @@ type FormRegisterLoginProps = {
   formType: "register" | "login";
   formAction: (data: RegisterLoginFormFields) => Promise<FormActionValue>;
 };
+
 export default function FormRegisterLogin({
   formType,
   formAction,
@@ -55,14 +57,18 @@ export default function FormRegisterLogin({
 
   const onSubmit: SubmitHandler<RegisterLoginFormFields> = async (data) => {
     try {
-      const tes = await formAction(data);
-      if (tes.message != "success") {
-        throw new Error(tes.message);
+      const formActionData = await formAction(data);
+      if (formActionData.message != "success") {
+        throw new CustomError({ message: formActionData.message });
       }
     } catch (error) {
       console.log(error);
+      let errorMessage = "Something went wrong";
+      if (error instanceof CustomError) {
+        errorMessage = error.message;
+      }
       form.setError("root", {
-        message: error.message || "Something went wrong",
+        message: errorMessage,
       });
     }
   };

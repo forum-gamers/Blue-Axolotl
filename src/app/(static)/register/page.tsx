@@ -19,6 +19,7 @@ export default function RegisterPage() {
       let errorMessage = errors[0].message.split("\n")[0];
       return { message: errorMessage };
     }
+    return { message: "success" };
   };
   return (
     <Container as="section">
