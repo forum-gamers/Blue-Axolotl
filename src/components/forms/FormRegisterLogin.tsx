@@ -1,6 +1,7 @@
 "use client";
 
 import Container from "@/components/atoms/contents/container";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -9,10 +10,6 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -21,35 +18,53 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-  accountType: z.string(),
-  username: z.string(),
-  fullName: z.string(),
-});
-const accountType = ["Admin", "Coach", "Proffesional"];
-type FormFields = z.infer<typeof schema>;
+import {
+  accountType,
+  loginRegisterSchema,
+  type RegisterLoginFormFields,
+} from "@/interfaces/loginregister";
+import { ApolloError } from "@apollo/client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, type SubmitHandler } from "react-hook-form";
 
+type FormActionValue = {
+  message: string;
+};
 type FormRegisterLoginProps = {
   formType: "register" | "login";
+  formAction: (data: RegisterLoginFormFields) => Promise<FormActionValue>;
 };
 export default function FormRegisterLogin({
   formType,
+  formAction,
 }: FormRegisterLoginProps) {
-  const form = useForm<FormFields>({
-    resolver: zodResolver(schema),
+  const form = useForm<RegisterLoginFormFields>({
+    resolver: zodResolver(loginRegisterSchema),
     defaultValues: {
       email: "",
       password: "",
-      accountType: "",
+      role: "",
       username: "",
-      fullName: "",
+      fullname: "",
+      confirmPassword: "",
     },
   });
+  const {
+    formState: { errors },
+  } = form;
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<RegisterLoginFormFields> = async (data) => {
+    try {
+      const tes = await formAction(data);
+      if (tes.message != "success") {
+        throw new Error(tes.message);
+      }
+    } catch (error) {
+      console.log(error);
+      form.setError("root", {
+        message: error.message || "Something went wrong",
+      });
+    }
   };
   return (
     <Container as="section">
@@ -67,15 +82,16 @@ export default function FormRegisterLogin({
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
-                      className="bg-slate-100"
+                      className="bg-lg-blue dark:bg-xl-blue"
                       placeholder="john@doe.com"
+                      required
                       {...field}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
-
+            {errors.email && <p>{errors.email.message}</p>}
             <FormField
               control={form.control}
               name="password"
@@ -84,29 +100,58 @@ export default function FormRegisterLogin({
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
-                      className="bg-slate-100"
+                      className="bg-lg-blue dark:bg-xl-blue"
                       placeholder="********"
                       type="password"
+                      required
                       {...field}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
+            {errors.password && <p>{errors.password.message}</p>}
+
             {formType === "register" && (
               <>
                 <FormField
                   control={form.control}
-                  name="fullName"
+                  name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel>Confirm Password</FormLabel>
                       <FormControl>
-                        <Input className="bg-slate-100" {...field} />
+                        <Input
+                          className="bg-lg-blue dark:bg-xl-blue required:border-red-500"
+                          placeholder="********"
+                          type="password"
+                          {...field}
+                          required
+                        />
                       </FormControl>
                     </FormItem>
                   )}
                 />
+                {errors.confirmPassword && (
+                  <p>{errors.confirmPassword.message}</p>
+                )}
+                <FormField
+                  control={form.control}
+                  name="fullname"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="bg-lg-blue dark:bg-xl-blue"
+                          {...field}
+                          required
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                {errors.fullname && <p>{errors.fullname.message}</p>}
                 <FormField
                   control={form.control}
                   name="username"
@@ -114,27 +159,31 @@ export default function FormRegisterLogin({
                     <FormItem>
                       <FormLabel>Username</FormLabel>
                       <FormControl>
-                        <Input className="bg-slate-100" {...field} />
+                        <Input
+                          className="bg-lg-blue dark:bg-xl-blue"
+                          {...field}
+                          required
+                        />
                       </FormControl>
                     </FormItem>
                   )}
                 />
                 <FormField
                   control={form.control}
-                  name="accountType"
+                  name="role"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Role</FormLabel>
                       <FormControl>
                         <Select onValueChange={field.onChange} defaultValue="">
-                          <SelectTrigger className="bg-slate-100">
+                          <SelectTrigger className="bg-lg-blue dark:bg-xl-blue">
                             <SelectValue placeholder="Select an option" />
                           </SelectTrigger>
-                          <SelectContent className="bg-blue-300">
-                            <SelectGroup className="bg-blue-100">
+                          <SelectContent className="bg-blue-300 dark:bg-d-lg-blue">
+                            <SelectGroup className="bg-blue-100 dark:bg-d-lg-blue">
                               {accountType.map((type) => (
                                 <SelectItem
-                                  className="bg-slate-100 opacity-100"
+                                  className="bg-blue-100 dark:bg-d-lg-blue"
                                   key={type}
                                   value={type}
                                 >
@@ -150,8 +199,12 @@ export default function FormRegisterLogin({
                 />
               </>
             )}
-
-            <Button variant="outline" className="bg-blue-100" type="submit">
+            {errors && <p>{errors.root?.message}</p>}
+            <Button
+              variant="outline"
+              className="bg-lg-blue dark:bg-xl-blue mt-5"
+              type="submit"
+            >
               Submit
             </Button>
           </form>

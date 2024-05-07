@@ -5,7 +5,7 @@ import {
   HttpLink,
 } from "@apollo/client";
 import { useMemo } from "react";
-const uri = process.env.URL || "http://localhost:5000";
+const uri = "http://localhost:8080";
 
 export const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   // <- pake yg ini aja

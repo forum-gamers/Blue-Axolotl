@@ -1,12 +1,30 @@
+import { Mutate } from "@/actions";
 import Container from "@/components/atoms/contents/container";
 import FormRegisterLogin from "@/components/forms/FormRegisterLogin";
+import type { RegisterLoginFormFields } from "@/interfaces/loginregister";
+import { loginMutaion } from "@/mutations/registerLogin";
 
 export default function LoginPage() {
+  const actionLogin = async ({ email, password }: RegisterLoginFormFields) => {
+    "use server";
+    const { data, errors } = await Mutate({
+      mutation: loginMutaion,
+      variables: {
+        login: { email, password },
+      },
+    });
+    if (data) {
+      console.log(data, "<~ this is data");
+    }
+    if (errors && errors.length) {
+      console.log(errors, "<~ this is error");
+    }
+  };
   return (
-    <Container as="section">
-      <div className="flex flex-col w-full h-full items-center justify-center">
+    <Container className="min-h-[90%]" as="section">
+      <div className="flex flex-col w-full lg:h-[58vh]  items-center justify-center">
         <h1>Login to your account</h1>
-        <FormRegisterLogin formType="login" />
+        <FormRegisterLogin formType="login" formAction={actionLogin} />
       </div>
     </Container>
   );

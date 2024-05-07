@@ -1,9 +1,10 @@
 "use server";
 
-import { client } from "@/lib/apolloClient";
 import type { BaseMutate, BaseQuery } from "@/interfaces/action";
-import type { FetchResult, ApolloQueryResult } from "@apollo/client";
+import { client } from "@/lib/apolloClient";
+import type { ApolloQueryResult, FetchResult } from "@apollo/client";
 
+// const client = getClient();
 export const Mutate = async <T>({
   mutation,
   context,
