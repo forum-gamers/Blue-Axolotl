@@ -3,76 +3,47 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { AlignJustify, LogIn, Menu } from "lucide-react";
 
 export default function MobileBtnBlogNavbar() {
-  const [open, setOpen] = useState<boolean>(false);
+  // const [open, setOpen] = useState<boolean>(false);
 
-  const navigations = [{ href: "/", title: "Home" }];
-
-  if (false)
-    navigations.push(
-      { href: "/login", title: "Login" },
-      { href: "/register", title: "Register" }
-    );
+  const navigations = [
+    { href: "/en-US/blog", title: "Blog" },
+    { href: "/login", title: "Login" },
+    { href: "/register", title: "Register" },
+    { href: "/user", title: "Profile" },
+  ];
 
   return (
-    <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        type="button"
-        className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-      >
-        <span className="absolute -inset-0.5"></span>
-        <span className="sr-only">Open main menu</span>
-
-        <svg
-          className="block h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-
-        <svg
-          className="hidden h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+    <DropdownMenu>
+      <DropdownMenuTrigger className="flex items-center sm:hidden" asChild>
+        <Button variant="ghost">
+          <AlignJustify />
+        </Button>
+      </DropdownMenuTrigger>
       <AnimatePresence>
-        {open && (
-          <nav className="flex flex-col space-y-2 mt-20 fixed z-50 w-40 items-center border rounded-md border-sm-blue dark:border-d-sm-blue bg-base-blue dark:bg-d-base-blue">
+        <DropdownMenuContent className="w-32">
+          <DropdownMenuGroup className="flex flex-col border-sm-blue dark:border-d-sm-blue bg-lg-blue dark:bg-d-base-blue">
             {navigations.map((el) => (
               <Link
-                key={el.title}
                 href={el.href}
-                prefetch
-                className="text-sm font-medium cursor-pointer hover:!text-opacity-50 h-6 flex items-center"
+                key={el.title}
+                className="flex justify-center gap-2 items-center"
               >
                 {el.title}
               </Link>
             ))}
-          </nav>
-        )}
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
       </AnimatePresence>
-    </div>
+    </DropdownMenu>
   );
 }

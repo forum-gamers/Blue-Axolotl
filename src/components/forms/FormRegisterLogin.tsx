@@ -128,7 +128,7 @@ export default function FormRegisterLogin({
                       <FormLabel>Confirm Password</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-lg-blue dark:bg-xl-blue required:border-red-500"
+                          className="bg-lg-blue dark:bg-xl-blue required"
                           placeholder="********"
                           type="password"
                           {...field}
