@@ -31,12 +31,12 @@ export default function MobileBtnBlogNavbar() {
       </DropdownMenuTrigger>
       <AnimatePresence>
         <DropdownMenuContent className="w-32">
-          <DropdownMenuGroup className="flex flex-col border-sm-blue dark:border-d-sm-blue bg-lg-blue dark:bg-d-base-blue">
+          <DropdownMenuGroup className="flex flex-col border-sm-blue dark:border-d-sm-blue bg-lg-blue dark:bg-d-base-blue justify-start items-start gap-2 ">
             {navigations.map((el) => (
               <Link
                 href={el.href}
                 key={el.title}
-                className="flex justify-center gap-2 items-center"
+                className="flex justify-center gap-2 items-center border-1 p-2 border-black"
               >
                 {el.title}
               </Link>
