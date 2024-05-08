@@ -1,16 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import clsx from "clsx";
-import { AnimatePresence } from "framer-motion";
-import useMobile from "@/hooks/useMobile";
-import useMenu from "@/hooks/useMenu";
-import { useEffect } from "react";
-import IMG from "@/components/static/images/logo-blue.png";
+import ThemeToggleBtn from "@/components/atoms/button/themeBtn";
 import MobileMenuButton from "@/components/molleculs/button/mobileMenuBtn";
 import MobileSidebarMenu from "@/components/molleculs/menu/mobileSidebarMenu";
-import LazyLoadImg from "@/components/atoms/img/lazyLoadImg";
-import ThemeToggleBtn from "@/components/atoms/button/themeBtn";
+import IMG from "@/components/static/images/logo-blue.png";
+import useMenu from "@/hooks/useMenu";
+import useMobile from "@/hooks/useMobile";
+import clsx from "clsx";
+import { AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function MobileHeader() {
   const isMobile = useMobile();
@@ -38,12 +38,12 @@ export default function MobileHeader() {
           }`}
         >
           <div className="z-10 w-max rounded-full border-2 border-white shadow-md dark:border-neutral-800">
-            <LazyLoadImg
-              src={IMG}
+            <Image
               alt="profile"
+              src={IMG}
               width={isOpen ? 80 : imgSize * 0.9}
               height={isOpen ? 80 : imgSize * 0.9}
-              rounded="rounded-full"
+              className="rounded-full"
             />
           </div>
           <hgroup className="mt-1 flex items-center gap-2">

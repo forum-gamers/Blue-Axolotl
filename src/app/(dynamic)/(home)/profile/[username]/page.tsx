@@ -14,4 +14,4 @@ export default async function ProfilePage({
     </Container>
   );
 }
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";

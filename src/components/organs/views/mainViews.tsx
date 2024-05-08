@@ -23,7 +23,7 @@ export default function MainViews({ readMode, children }: MainViewsProps) {
           <header className="flex w-full flex-col justify-center lg:flex-row lg:gap-5 lg:hidden">
             {!readMode && <MobileHeader />}
           </header>
-          <main className="no-scrollbar w-full scroll-smooth transition-all duration-300 lg:ml-72 lg:min-h-screen lg:max-w-[854px] flex-1">
+          <main className="no-scrollbar w-full scroll-smooth transition-all duration-300 lg:ml-72 lg:min-h-screen lg:max-w-7xl mx:auto flex-1">
             {children}
           </main>
           {!readMode && <Sidebar />}
