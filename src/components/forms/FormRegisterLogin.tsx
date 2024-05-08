@@ -57,7 +57,7 @@ export default function FormRegisterLogin({
   useEffect(() => {
     if (token) {
       (async () => {
-        await signIn("credentials", { access_token: token, redirect: false });
+        await signIn("Credentials", { access_token: token, redirect: false });
         window.history.replaceState({}, "", window.location.pathname);
         router.push("/");
       })();

@@ -26,7 +26,6 @@ export default function LoginPage() {
       return redirect(`/login?error=${errorMessage}`, RedirectType.push);
     }
     const { login: token } = data as { login: string };
-    console.log(token);
     return redirect(`/login?token=${token}`, RedirectType.replace);
   };
   return (
