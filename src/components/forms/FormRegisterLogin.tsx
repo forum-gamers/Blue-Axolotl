@@ -18,22 +18,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CustomError } from "@/interfaces/customError";
 import {
   accountType,
   loginRegisterSchema,
   type RegisterLoginFormFields,
 } from "@/interfaces/loginregister";
-import { ApolloError } from "@apollo/client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
-type FormActionValue = {
-  message: string;
-};
 type FormRegisterLoginProps = {
   formType: "register" | "login";
-  formAction: (data: RegisterLoginFormFields) => Promise<FormActionValue>;
+  formAction: (data: FormData) => Promise<void>;
 };
 
 export default function FormRegisterLogin({
@@ -51,34 +49,32 @@ export default function FormRegisterLogin({
       confirmPassword: "",
     },
   });
+  const router = useRouter();
+  const searchParams = new URLSearchParams(useSearchParams()!);
+  const token = searchParams.get("token");
+  const error = searchParams.get("error");
+
+  useEffect(() => {
+    if (token) {
+      (async () => {
+        await signIn("credentials", { access_token: token, redirect: false });
+        window.history.replaceState({}, "", window.location.pathname);
+        router.push("/");
+      })();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
   const {
     formState: { errors },
   } = form;
 
-  const onSubmit: SubmitHandler<RegisterLoginFormFields> = async (data) => {
-    try {
-      const formActionData = await formAction(data);
-      if (formActionData.message != "success") {
-        throw new CustomError({ message: formActionData.message });
-      }
-    } catch (error) {
-      console.log(error);
-      let errorMessage = "Something went wrong";
-      if (error instanceof CustomError) {
-        errorMessage = error.message;
-      }
-      form.setError("root", {
-        message: errorMessage,
-      });
-    }
-  };
   return (
     <Container as="section">
       <div className="flex w-full h-full items-center justify-center">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
             className="flex bg-lg-blue dark:bg-xl-blue  border-2 rounded-md flex-col p-4 max-w-md min-w-[300px] gap-2"
+            action={formAction}
           >
             <FormField
               control={form.control}
@@ -181,7 +177,11 @@ export default function FormRegisterLogin({
                     <FormItem>
                       <FormLabel>Role</FormLabel>
                       <FormControl>
-                        <Select onValueChange={field.onChange} defaultValue="">
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue=""
+                          name="role"
+                        >
                           <SelectTrigger className="bg-lg-blue dark:bg-xl-blue">
                             <SelectValue placeholder="Select an option" />
                           </SelectTrigger>
@@ -206,6 +206,7 @@ export default function FormRegisterLogin({
               </>
             )}
             {errors && <p>{errors.root?.message}</p>}
+            {error && <p className="text-red-400">{error}</p>}
             <Button
               variant="outline"
               className="bg-lg-blue dark:bg-xl-blue mt-5"

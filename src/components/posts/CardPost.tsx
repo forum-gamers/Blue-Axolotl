@@ -25,7 +25,7 @@ export default function CardPost({
   date,
 }: CardPostProps) {
   return (
-    <Card className="bg-blue-200 w-full max-w-xl ">
+    <Card className="bg-blue-200 w-full max-w-xl dark:bg-d-sm-blue">
       <CardHeader className="flex flex-row gap-2 items-center space-y-0 pb-2">
         <Avatar>
           <AvatarImage src={authorAvatar} alt={`${author} avatar`} />

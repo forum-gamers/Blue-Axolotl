@@ -1,25 +1,40 @@
 import { Mutate } from "@/actions";
 import Container from "@/components/atoms/contents/container";
 import FormRegisterLogin from "@/components/forms/FormRegisterLogin";
-import type { RegisterLoginFormFields } from "@/interfaces/loginregister";
 import { registerMutation } from "@/mutations/registerLogin";
 import { redirect } from "next/navigation";
 
 export default function RegisterPage() {
-  const registerAction = async (registerData: RegisterLoginFormFields) => {
+  const registerAction = async (formData: FormData) => {
     "use server";
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const fullname = formData.get("fullname") as string;
+    const username = formData.get("username") as string;
+    const confirmPassword = formData.get("confirmPassword") as string;
+    const role = formData.get("role") as string;
+
+    console.log(password, fullname, username, confirmPassword, role);
     const { data, errors } = await Mutate({
       mutation: registerMutation,
-      variables: { payload: registerData },
+      variables: {
+        payload: {
+          email,
+          password,
+          confirmPassword,
+          fullname,
+          username,
+          role,
+        },
+      },
     });
-    if (data) {
-      redirect("/login");
-    }
-    if (errors && errors.length) {
+    console.log(data);
+    if (!data && errors?.length) {
       let errorMessage = errors[0].message.split("\n")[0];
-      return { message: errorMessage };
+      return redirect(`/register?error=${errorMessage}`);
     }
-    return { message: "success" };
+
+    return redirect(`/login`);
   };
   return (
     <Container as="section">

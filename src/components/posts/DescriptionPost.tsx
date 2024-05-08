@@ -21,7 +21,7 @@ export default function DescriptionPost({
       {truncate && (
         <Button
           variant="ghost"
-          className="text-black p-0 h-4"
+          className="text-black p-0 h-4 dark:text-slate-100"
           onClick={seeMoreAction}
         >
           See more...
