@@ -4,7 +4,9 @@ import FormRegisterLogin from "@/components/forms/FormRegisterLogin";
 import { loginMutaion } from "@/mutations/registerLogin";
 import { redirect } from "next/navigation";
 import { RedirectType } from "next/dist/client/components/redirect";
-export default function LoginPage() {
+import { getServerSideSession } from "@/helper/session";
+export default async function LoginPage() {
+  if (await getServerSideSession()) return redirect("/");
   const actionLogin = async (formData: FormData) => {
     "use server";
     const email = formData.get("email") as string;

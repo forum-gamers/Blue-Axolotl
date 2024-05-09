@@ -13,7 +13,7 @@ export default function ChangeLangBtn() {
   const [hover, setHover] = useState<boolean>(false);
 
   const generateUrl = (lang: Language) => {
-    const urls = pathname.split("/");
+    const urls = pathname?.split("/") || ["en-US", "id-ID"];
     urls[1] = lang;
 
     return urls.join("/");

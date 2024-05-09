@@ -21,7 +21,7 @@ export type PageProps<
 
 export interface CustomSession extends Session {
   user?: {
-    id?: number;
+    id?: string;
     name?: string | null;
     access_token?: string | null;
   };

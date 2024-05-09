@@ -51,19 +51,26 @@ export default function FormRegisterLogin({
   });
   const router = useRouter();
   const searchParams = new URLSearchParams(useSearchParams()!);
-  const token = searchParams.get("token");
+  const access_token = searchParams.get("token");
   const error = searchParams.get("error");
 
   useEffect(() => {
-    if (token) {
+    if (access_token) {
       (async () => {
-        await signIn("Credentials", { access_token: token, redirect: false });
-        window.history.replaceState({}, "", window.location.pathname);
-        router.push("/");
+        try {
+          const signinaction = await signIn("credentials", {
+            access_token,
+            redirect: false,
+          });
+          window.history.replaceState({}, "", window.location.pathname);
+          router.push("/");
+        } catch (error) {
+          console.log(error, "<~ error");
+        }
       })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [access_token]);
   const {
     formState: { errors },
   } = form;

@@ -1,9 +1,8 @@
-import type { NextAuthOptions, Session, TokenSet, User } from "next-auth";
-import credentials from "next-auth/providers/credentials";
-import googleCredentials from "next-auth/providers/google";
-import { customVerify, verifyToken, customToken } from "@/helper/jwt";
-import type { JWT } from "next-auth/jwt";
+import { customToken, customVerify, verifyToken } from "@/helper/jwt";
 import type { CustomSession } from "@/interfaces";
+import type { NextAuthOptions, Session, TokenSet, User } from "next-auth";
+import type { JWT } from "next-auth/jwt";
+import credentials from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -20,8 +19,8 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
+        console.log(credentials, "masuk ke authorize");
         try {
-          console.log(credentials, "<~ credentials");
           const { id } = verifyToken(credentials?.access_token);
 
           const user = {
@@ -32,14 +31,15 @@ export const authOptions: NextAuthOptions = {
 
           return user;
         } catch (err) {
+          console.log(err);
           return null;
         }
       },
     }),
-    googleCredentials({
-      clientId: process.env.GOOGLE_OAUTH_CLIENTID as string,
-      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET as string,
-    }),
+    // googleCredentials({
+    //   clientId: process.env.GOOGLE_OAUTH_CLIENTID as string,
+    //   clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET as string,
+    // }),
   ],
   pages: {
     signIn: "/login",

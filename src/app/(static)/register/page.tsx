@@ -14,7 +14,6 @@ export default function RegisterPage() {
     const confirmPassword = formData.get("confirmPassword") as string;
     const role = formData.get("role") as string;
 
-    console.log(password, fullname, username, confirmPassword, role);
     const { data, errors } = await Mutate({
       mutation: registerMutation,
       variables: {
@@ -28,7 +27,6 @@ export default function RegisterPage() {
         },
       },
     });
-    console.log(data);
     if (!data && errors?.length) {
       let errorMessage = errors[0].message.split("\n")[0];
       return redirect(`/register?error=${errorMessage}`);

@@ -5,8 +5,13 @@ export const SECRET: Secret = process.env.SECRET as Secret;
 export const createToken = (payload: object): string =>
   sign(payload, SECRET, { algorithm: "HS256" });
 
-export const verifyToken = (token: string | any): JwtPayload =>
-  verify(token, SECRET, { algorithms: ["HS256"] }) as JwtPayload;
+export const verifyToken = (token: string | any): JwtPayload => {
+  const tokensValue = verify(token, SECRET, {
+    algorithms: ["HS256"],
+  }) as JwtPayload;
+  console.log(tokensValue);
+  return tokensValue;
+};
 
 export const customVerify = (
   token: string | undefined,
