@@ -12,7 +12,6 @@ export default async function ProfilePage({
   const loggedInUserId = ((await getServerSideSession()) as CustomSession).user
     ?.id;
 
-  console.log(loggedInUserId, userId);
   if (loggedInUserId == userId) return redirect("/profile");
 
   return (

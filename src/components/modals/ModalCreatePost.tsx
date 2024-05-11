@@ -1,11 +1,11 @@
 "use client";
 
 import { BsLayoutTextWindow } from "@/components/atoms/icons/bs";
-import { useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { MdAddAPhoto } from "react-icons/md";
+import { useState } from "react";
+import FormCreatePost from "../forms/FormCreatePost";
+import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 
 export default function ModalCreatePost() {
   const [open, setOpen] = useState<boolean>(false);
@@ -27,22 +27,8 @@ export default function ModalCreatePost() {
           </Button>
         </div>
       </DialogTrigger>
-      <DialogContent className="flex flex-row justify-center fixed w-[80%] lg:mr-12 mt-10 rounded-md h-72 transition-all duration-500 shadow-lg max-w-2xl bg-white dark:bg-black p-0">
-        <div className="w-full flex flex-col px-2 py-2 m-2 lg:from-lg-blue bg-lg-blue to-xl-blue dark:from-d-lg-blue lg:dark:bg-d-lg-blue dark:to-d-xl-blue">
-          <textarea
-            className="sec  p-3 h-60 border border-sm-blue dark:border-d-sm-blue outline-none"
-            spellCheck
-            placeholder="Describe everything about this post here"
-          />
-          <div className="flex flex-row my-2 py-2 px-2 justify-between items-center">
-            <div className="flex flex-row justify-start gap-4">
-              <MdAddAPhoto size={20} className="cursor-pointer" />
-            </div>
-            <button className="dark:bg-d-xs-blue bg-xs-blue h-12 w-20 rounded-md hover:bg-xl-blue hover:dark:bg-d-xl-blue">
-              Send
-            </button>
-          </div>
-        </div>
+      <DialogContent className="flex flex-row justify-center fixed w-[80%] lg:mr-12 mt-10 rounded-md min-h-72 transition-all duration-500 shadow-lg max-w-2xl bg-white dark:bg-black p-0">
+        <FormCreatePost setOpen={setOpen} />
       </DialogContent>
     </Dialog>
   );

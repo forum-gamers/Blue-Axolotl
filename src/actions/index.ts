@@ -1,5 +1,7 @@
 "use server";
 
+import { getServerSideSession } from "@/helper/session";
+import type { CustomSession } from "@/interfaces";
 import type { BaseMutate, BaseQuery } from "@/interfaces/action";
 import { client } from "@/lib/apolloClient";
 import type { ApolloQueryResult, FetchResult } from "@apollo/client";
@@ -29,3 +31,7 @@ export const Query = async <T>({
     fetchPolicy: "cache-first",
     errorPolicy: "all",
   });
+
+export const getAccessToken = async () => {
+  return ((await getServerSideSession()) as CustomSession).user?.access_token;
+};

@@ -1,15 +1,7 @@
 "use server";
 
-import { Query } from "@/actions";
-import type { CustomSession } from "@/interfaces";
+import { getAccessToken, Query } from "@/actions";
 import { userProfileQuery } from "@/queries/profile";
-import { getServerSideProps } from "next/dist/build/templates/pages";
-
-const getAccessToken = async () => {
-  return (
-    ((await getServerSideProps()) as CustomSession).user?.access_token || ""
-  );
-};
 
 export const getUserProfile = async (username: string) => {
   return username;
