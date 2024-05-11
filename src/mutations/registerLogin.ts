@@ -1,12 +1,12 @@
 import { gql } from "@apollo/client";
 
-export const loginMutaion = gql`
+export const LOGINMUTATION = gql`
   mutation Mutation($payload: LoginInput!) {
     login(payload: $payload)
   }
 `;
 
-export const registerMutation = gql`
+export const REGISTERMUTATION = gql`
   mutation Register($payload: RegisterInput!) {
     register(payload: $payload) {
       fullname
