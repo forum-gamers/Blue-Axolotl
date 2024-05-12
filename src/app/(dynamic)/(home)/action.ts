@@ -1,7 +1,7 @@
 "use server";
 
 import { getAccessToken, Mutate } from "@/actions";
-import { createPostMutation } from "@/mutations/post";
+import { CREATEPOSTMUTATION } from "@/mutations/post";
 import type { ImageType } from "@/types";
 
 export const uploadPost = async ({
@@ -13,7 +13,7 @@ export const uploadPost = async ({
 }) => {
   const access_token = await getAccessToken();
   const { data, errors } = await Mutate({
-    mutation: createPostMutation,
+    mutation: CREATEPOSTMUTATION,
     variables: {
       args: {
         text,

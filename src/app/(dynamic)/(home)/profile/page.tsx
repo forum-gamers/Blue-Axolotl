@@ -1,5 +1,3 @@
-// import { getProfile } from "./action";
-
 import Container from "@/components/atoms/contents/container";
 import { getUserProfile } from "./actions";
 
