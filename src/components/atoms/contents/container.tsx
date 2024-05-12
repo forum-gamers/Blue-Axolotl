@@ -18,7 +18,7 @@ export default function Container({
 }: ContainerProps) {
   const classname = `mb-10 ${
     (readMode || withMarginTop) && "mt-6"
-  } p-4 md:p-8 lg:pr-0 ${className} max-w-screen `;
+  } p-4 md:p-8 ${className} max-w-screen `;
 
   return (
     <ContainerTag data-testid="container" className={classname} {...rest}>

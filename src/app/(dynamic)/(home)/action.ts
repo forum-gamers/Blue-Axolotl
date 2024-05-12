@@ -19,7 +19,7 @@ export const uploadPost = async ({
         text,
         files,
         allowComment: true,
-        privacy: "public",
+        privacy: "Public",
       },
     },
     context: {
@@ -28,10 +28,6 @@ export const uploadPost = async ({
       },
     },
   });
-  if (!data && errors?.length) {
-    console.log(errors[0].message);
-  }
   if (errors) return errors;
-  // console.log(newPost);
   return data;
 };

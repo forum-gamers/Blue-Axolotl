@@ -19,7 +19,6 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        console.log(credentials, "masuk ke authorize");
         try {
           const { id } = verifyToken(credentials?.access_token);
 
@@ -31,7 +30,6 @@ export const authOptions: NextAuthOptions = {
 
           return user;
         } catch (err) {
-          console.log(err);
           return null;
         }
       },
