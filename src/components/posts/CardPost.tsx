@@ -13,6 +13,7 @@ type CardPostProps = {
   author: string;
   authorAvatar: string;
   date: Date;
+  className?: string;
 };
 
 export default function CardPost({
@@ -22,9 +23,10 @@ export default function CardPost({
   author,
   authorAvatar,
   date,
+  className,
 }: CardPostProps) {
   return (
-    <Card className="bg-blue-200 w-full max-w-xl dark:bg-d-sm-blue">
+    <Card className={`bg-blue-200 dark:bg-d-sm-blue ${className}`}>
       <CardHeader className="flex flex-row gap-2 items-center space-y-0 pb-2">
         <Avatar>
           <AvatarImage src={authorAvatar} alt={`${author} avatar`} />

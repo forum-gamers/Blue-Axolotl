@@ -13,3 +13,9 @@ export const REGISTERMUTATION = gql`
     }
   }
 `;
+
+export const VERIFYUSERMUTATION = gql`
+  mutation Mutation($token: String!) {
+    changeVerified(token: $token)
+  }
+`;

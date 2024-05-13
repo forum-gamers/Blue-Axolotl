@@ -2,7 +2,11 @@
 
 import { redirect, RedirectType } from "next/navigation";
 import { Mutate } from ".";
-import { LOGINMUTATION, REGISTERMUTATION } from "@/mutations/registerLogin";
+import {
+  LOGINMUTATION,
+  REGISTERMUTATION,
+  VERIFYUSERMUTATION,
+} from "@/mutations/registerLogin";
 
 export const actionLogin = async (formData: FormData) => {
   const email = formData.get("email") as string;
@@ -54,4 +58,18 @@ export const registerAction = async (formData: FormData) => {
   }
 
   return redirect(`/login`);
+};
+
+export const checkToken = async (token: string) => {
+  const { data, errors } = await Mutate({
+    mutation: VERIFYUSERMUTATION,
+    variables: {
+      token,
+    },
+  });
+  if (!data && errors?.length) {
+    let errorMessage = errors[0].message.split("\n")[0];
+    return redirect(`/user/verify?error=${errorMessage}`);
+  }
+  return redirect(`/user/verify?verified=true`);
 };

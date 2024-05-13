@@ -1,13 +1,17 @@
-import type { ChildrenProps } from "@/interfaces";
-import { getUserProfile } from "./actions";
 import Container from "@/components/atoms/contents/container";
-import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import TruncateCardText from "@/components/commons/TruncateCardText";
 import TabPosts from "@/components/profile/TabPosts";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { getServerSideSession } from "@/helper/session";
+import type { ChildrenProps, CustomSession } from "@/interfaces";
+import Image from "next/image";
+import { getUserProfile } from "./actions";
 
 export default async function Layout({ children }: ChildrenProps) {
   const { data, error } = await getUserProfile();
+  const { user } = (await getServerSideSession()) as CustomSession;
+
+  const username = user?.username as string;
 
   return (
     <Container className="w-full flex flex-col gap-4 min-h-screen mt-0 lg:mt-10 lg:pr-10 lg:max-w-xl xl:max-w-3xl">
@@ -40,7 +44,7 @@ export default async function Layout({ children }: ChildrenProps) {
       {/**
        * section about
        */}
-      <Card className="w-full bg-slate-300 dark:bg-slate-700 ">
+      <Card className="w-full bg-blue-200  dark:bg-d-sm-blue ">
         <CardHeader>About</CardHeader>
         <CardContent>
           <TruncateCardText
@@ -54,11 +58,10 @@ export default async function Layout({ children }: ChildrenProps) {
         </CardContent>
       </Card>
 
-      <Card className="w-full bg-slate-300 dark:bg-slate-700">
-        <TabPosts />
-
-        {children}
+      <Card className=" bg-blue-200 w-full dark:bg-d-sm-blue">
+        <TabPosts username={username} />
       </Card>
+      {children}
     </Container>
   );
 }

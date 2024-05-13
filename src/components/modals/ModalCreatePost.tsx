@@ -11,10 +11,7 @@ export default function ModalCreatePost() {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        className="sm:max-w-3xl flex items-center w-[97%] md:w-[80%]"
-        asChild
-      >
+      <DialogTrigger className="sm:max-w-3xl flex items-center " asChild>
         <div
           className={cn(
             "flex h-24 flex-row justify-evenly items-center max-w-3xl px-8 py-20 gap-4 w-full bg-gradient-to-blue lg:from-lg-blue bg-lg-blue to-xl-blue dark:from-d-lg-blue lg:dark:bg-d-lg-blue dark:to-d-xl-blue rounded-lg",

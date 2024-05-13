@@ -2,11 +2,11 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { CardHeader } from "../ui/card";
+type TabPostsProps = {
+  username: string;
+};
 
-import { useParams } from "next/navigation";
-
-export default function TabPosts() {
-  const { username } = useParams<{ username: string }>();
+export default function TabPosts({ username }: TabPostsProps) {
   return (
     <CardHeader className="flex flex-row items-center gap-4">
       <Button asChild variant="ghost">

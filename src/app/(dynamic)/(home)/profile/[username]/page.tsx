@@ -38,7 +38,7 @@ export default async function ProfileUserPage() {
   const posts = await dummyProfilePost();
 
   return (
-    <CardContent className="flex flex-col gap-2 w-full">
+    <CardContent className="flex p-0 flex-col gap-2 w-full">
       {posts.map((post) => (
         <CardPost
           key={post.id}

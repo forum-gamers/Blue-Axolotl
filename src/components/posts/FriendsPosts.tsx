@@ -37,7 +37,7 @@ export default async function FriendsPosts() {
   const posts = await getAllFriendsPosts();
 
   return (
-    <div className="md:p-10 flex flex-col gap-2 w-full justify-center items-center mx-auto">
+    <div className="flex flex-col gap-2 w-full ">
       {posts.map((post) => (
         <CardPost
           key={post.id}

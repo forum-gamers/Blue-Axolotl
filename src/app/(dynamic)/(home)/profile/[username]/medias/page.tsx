@@ -41,7 +41,7 @@ export default async function MediaPage() {
   const posts = await dummyProfilePost();
 
   return (
-    <CardContent className="flex flex-col gap-2 w-full">
+    <CardContent className="flex flex-col p-0 gap-2 w-full">
       {posts.map((post) => (
         <CardPost
           key={post.id}
