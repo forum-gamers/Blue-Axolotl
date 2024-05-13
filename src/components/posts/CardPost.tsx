@@ -1,11 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
-import moment from "moment";
-import { Separator } from "../ui/separator";
-import Image from "next/image";
 import { Heart, MessageSquareMore } from "lucide-react";
+import moment from "moment";
+import Image from "next/image";
+import TruncateCardText from "../commons/TruncateCardText";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
-import DescriptionPost from "./DescriptionPost";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 
 type CardPostProps = {
   title: string;
@@ -41,7 +40,7 @@ export default function CardPost({
       </CardHeader>
       {/* <Separator className="my-4  bg-slate-500 w-full " /> */}
       <CardContent className="mt-4">
-        <DescriptionPost description={description} />
+        <TruncateCardText text={description} />
         {image && (
           <div className="justify-center flex w-full mt-5">
             <Image
