@@ -16,25 +16,43 @@ export const USERPOSTQUERIES = gql`
       tags
       privacy
       totalData
+      user {
+        fullname
+        imageUrl
+        imageId
+      }
+      media {
+        id
+      }
+    }
+  }
+`;
+
+export const USERPOSTWITHMEDIASQUERY = gql`
+  query Query {
+    getMyPost {
+      _id
+      userId
+      text
+      allowComment
+      createdAt
+      updatedAt
+      countLike
+      countShare
+      isLiked
+      isShared
+      tags
+      privacy
+      totalData
       media {
         id
         type
         url
       }
       user {
-        id
         fullname
-        username
-        email
-        isVerified
-        bio
         imageUrl
         imageId
-        backgroundImageUrl
-        backgroundImageId
-        status
-        createdAt
-        updatedAt
       }
     }
   }

@@ -1,3 +1,5 @@
+"use client";
+import type { Media } from "@/interfaces/post";
 import { Heart, MessageSquareMore } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
@@ -7,26 +9,36 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 
 type CardPostProps = {
-  title: string;
   description: string;
-  image?: string;
   author: string;
   authorAvatar: string;
-  date: Date;
+  date: string | Date;
   className?: string;
+  images?: Media[];
 };
 
+// function fromNow(ms: number) {
+//   const units = {
+//     second: 1000,
+//     minute: 60 * 1000,
+//     hour: 60 * 60 * 1000,
+//     day: 24 * 60 * 60 * 1000,
+//   };
+
+//   const unit = Object.keys(units).find((unit) => Math.abs(diffInMilliseconds) > units[unit]);
+//   const amount = Math.floor(Math.abs(diffInMilliseconds) / units[unit]);
+
+// }
 export default function CardPost({
-  title,
   description,
-  image,
   author,
   authorAvatar,
   date,
   className,
+  images,
 }: CardPostProps) {
   return (
-    <Card className={`bg-blue-200 dark:bg-d-sm-blue ${className}`}>
+    <Card className={` bg-blue-300 dark:bg-xl-blue ${className}`}>
       <CardHeader className="flex flex-row gap-2 items-center space-y-0 pb-2">
         <Avatar>
           <AvatarImage src={authorAvatar} alt={`${author} avatar`} />
@@ -37,23 +49,22 @@ export default function CardPost({
         </Avatar>
         <div className="w-full  text-xs">
           <p>{author}</p>
-          <p>{moment(date).fromNow()}</p>
+          <p>{moment(new Date(date).toISOString()).fromNow()}</p>
         </div>
       </CardHeader>
-      {/* <Separator className="my-4  bg-slate-500 w-full " /> */}
       <CardContent className="mt-4">
         <TruncateCardText text={description} />
-        {image && (
-          <div className="justify-center flex w-full mt-5">
-            <Image
-              src={image}
-              alt={title}
-              width={400}
-              height={300}
-              className=""
-            />
-          </div>
-        )}
+        {!!images?.length &&
+          images.map((image, index) => (
+            <div className="p-1" key={index}>
+              <Image
+                src={image.url}
+                alt={image.type || "image-post"}
+                width={400}
+                height={300}
+              />
+            </div>
+          ))}
       </CardContent>
       <CardFooter>
         <Button variant="ghost" className="hover:bg-slate-200 gap-2">

@@ -1,9 +1,8 @@
+import { getUserProfile } from "@/actions/profile";
 import MainFooter from "@/components/atoms/footer/mainFooter";
 import Loading from "@/components/atoms/loaders/pageLoader";
-import { getServerSideSession } from "@/helper/session";
 import type { ChildrenProps } from "@/interfaces";
 import dynamic from "next/dynamic";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import MobileHeader from "../header/mobileHeader";
 import InitPage from "../hoc/initPage";
@@ -21,10 +20,11 @@ export default async function MainViews({
   readMode,
   children,
 }: MainViewsProps) {
-  const sessionServer = await getServerSideSession();
-  if (!sessionServer) return redirect("/login");
+  const {
+    data: { me },
+  } = await getUserProfile();
   return (
-    <InitPage>
+    <InitPage user={me}>
       <Suspense fallback={<Loading />}>
         <div className="flex flex-col justify-center bg-xl-blue dark:bg-d-xl-blue h-full w-full overflow-hidden">
           <header className="flex w-full flex-col justify-center lg:flex-row lg:gap-5 lg:hidden">

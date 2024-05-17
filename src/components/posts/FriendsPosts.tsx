@@ -41,9 +41,7 @@ export default async function FriendsPosts() {
       {posts.map((post) => (
         <CardPost
           key={post.id}
-          title={post.title}
           description={post.description}
-          image={post.image}
           author={post.author}
           authorAvatar={post.authorAvatar}
           date={post.date}

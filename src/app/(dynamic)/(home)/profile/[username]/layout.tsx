@@ -2,17 +2,11 @@ import Container from "@/components/atoms/contents/container";
 import TruncateCardText from "@/components/commons/TruncateCardText";
 import TabPosts from "@/components/profile/TabPosts";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { getServerSideSession } from "@/helper/session";
-import type { ChildrenProps, CustomSession } from "@/interfaces";
+import type { ChildrenProps } from "@/interfaces";
 import Image from "next/image";
-import { getUserProfile } from "./actions";
 
 export default async function Layout({ children }: ChildrenProps) {
-  const { data, error } = await getUserProfile();
-  const { user } = (await getServerSideSession()) as CustomSession;
-
-  const username = user?.username as string;
-
+  const username = "blurry29";
   return (
     <Container className="w-full flex flex-col gap-4 min-h-screen mt-0 lg:mt-10 lg:pr-10 lg:max-w-xl xl:max-w-3xl">
       {/**
@@ -59,9 +53,9 @@ export default async function Layout({ children }: ChildrenProps) {
       </Card>
 
       <Card className=" bg-blue-200 w-full dark:bg-d-sm-blue">
-        <TabPosts username={username} />
+        <TabPosts />
+        <div className="flex flex-col gap-2 p-2">{children}</div>
       </Card>
-      {children}
     </Container>
   );
 }

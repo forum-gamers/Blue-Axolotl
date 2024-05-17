@@ -1,19 +1,19 @@
 "use server";
 
 import { getContext, Query } from "@/actions";
-import { USERPOSTQUERIES } from "@/queries/post";
-import { USERPROFILEQUERY } from "@/queries/profile";
+import type { PostResponse } from "@/interfaces/post";
+import { USERPOSTQUERIES, USERPOSTWITHMEDIASQUERY } from "@/queries/post";
 
 export const getUserPosts = async () => {
-  return await Query({
+  return await Query<{ getMyPost: PostResponse[] }>({
     query: USERPOSTQUERIES,
     context: await getContext(),
   });
 };
 
-export const getUserProfile = async () => {
-  return await Query({
-    query: USERPROFILEQUERY,
+export const getUserPostsWithMedia = async () => {
+  return await Query<{ getMyPost: PostResponse[] }>({
+    query: USERPOSTWITHMEDIASQUERY,
     context: await getContext(),
   });
 };
