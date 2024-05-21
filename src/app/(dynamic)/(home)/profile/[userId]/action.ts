@@ -2,7 +2,7 @@
 
 import { Query } from "@/actions";
 import type { CustomSession } from "@/interfaces";
-import { userProfileQuery } from "@/queries/profile";
+import { ME } from "@/queries/user/user";
 import { getServerSideProps } from "next/dist/build/templates/pages";
 
 const getAccessToken = async () => {
@@ -18,7 +18,7 @@ export const getUserProfile = async (username: string) => {
 export const getProfile = async () => {
   const access_token = await getAccessToken();
   return Query({
-    query: userProfileQuery,
+    query: ME,
     context: {
       headers: {
         access_token,
