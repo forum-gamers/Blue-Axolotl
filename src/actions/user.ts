@@ -2,7 +2,7 @@
 
 import { redirect, RedirectType } from "next/navigation";
 import { Mutate } from ".";
-import { LOGINMUTATION, REGISTERMUTATION } from "@/mutations/registerLogin";
+import { LOGINMUTATION, REGISTERMUTATION } from "@/mutations/user/user";
 
 export const actionLogin = async (formData: FormData) => {
   const email = formData.get("email") as string;
