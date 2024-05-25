@@ -3,6 +3,7 @@ import { BiHomeSmile, BiEditAlt } from "@/components/atoms/icons/bi";
 import { GiChampions } from "@/components/atoms/icons/gi";
 import { AiOutlineTeam } from "@/components/atoms/icons/ai";
 import { IoIosSearch } from "@/components/atoms/icons/io";
+import { User } from "lucide-react";
 
 export const SIDEBAR_MENU: SidebarMenu[] = [
   {
@@ -33,6 +34,12 @@ export const SIDEBAR_MENU: SidebarMenu[] = [
     title: "Tournament",
     href: "/tournament",
     icon: <GiChampions size={20} />,
+    isExternal: false,
+  },
+  {
+    title: "Profile",
+    href: "/profile",
+    icon: <User />,
     isExternal: false,
   },
 ];

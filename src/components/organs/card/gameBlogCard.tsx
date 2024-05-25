@@ -19,7 +19,7 @@ export default function GameBlogCard({
   return (
     <AnimateCard
       as="article"
-      className="relative cursor-pointer bg-lg-blue dark:bg-d-lg-blue border border-xs-blue dark:border-d-xs-blue hover:scale-[102%]"
+      className="relative cursor-pointer bg-lg-blue dark:bg-d-lg-blue border border-xs-blue dark:border-d-xs-blue hover:scale-[102%] max-w-sm"
     >
       <LazyLoadImg
         src={src}

@@ -12,9 +12,12 @@ export default async function Page({ params: { lang } }: BlogPageProps) {
   if (!LANGUAGE.includes(lang)) notFound();
 
   return (
-    <Container data-aos="fade-left" className="flex justify-center flex-col">
+    <Container
+      data-aos="fade-left"
+      className="flex justify-center flex-col mx-auto"
+    >
       <PageHeading title={lang === "en-US" ? "Our Blog" : "Blog Kami"} />
-      <section className="grid gap-6 pt-2 sm:grid-cols-2 h-[26rem] overflow-x-visible overflow-y-scroll no-scrollbar">
+      <section className="grid gap-6 pt-2 sm:grid-cols-2 h-full overflow-x-visible overflow-y-scroll no-scrollbar mx-auto">
         {Object.keys(GAMEIMAGE).map((el) => (
           <Link prefetch passHref href={`/${lang}/blog/${el}`} key={el}>
             <GameBlogCard

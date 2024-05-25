@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { Suspense } from "react";
 
 export default function NavFooter() {
-  const { lang } = useParams<{ lang: Language }>();
+  const { lang } = useParams<{ lang: Language }>() || { lang: "en-US" };
 
   return (
     <>

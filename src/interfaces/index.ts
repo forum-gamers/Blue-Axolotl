@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Session } from "next-auth";
 
 export interface ChildrenProps {
   readonly children: ReactNode;
@@ -17,3 +18,13 @@ export type PageProps<
   params: params & { lang: Language };
   searchParams?: searchParams;
 };
+
+export interface CustomSession extends Session {
+  user?: {
+    id?: string;
+    name?: string | null;
+    access_token?: string | null;
+    username?: string | null;
+    accountType?: string | null;
+  };
+}

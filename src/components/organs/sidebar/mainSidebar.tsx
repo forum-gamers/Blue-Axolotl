@@ -8,9 +8,15 @@ import LazyLoadImg from "@/components/atoms/img/lazyLoadImg";
 import B from "@/components/static/images/logo-blue.png";
 import ThemeToggleBtn from "@/components/atoms/button/themeBtn";
 import Copyright from "@/components/atoms/footer/copyright";
+import { Button } from "@/components/ui/button";
+import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
+import useProfile from "@/hooks/useProfile";
 
 export default function Sidebar() {
   const [hover, setHover] = useState<boolean>(false);
+  const { profile } = useProfile();
+  const { imageUrl } = profile;
 
   return (
     <aside
@@ -27,7 +33,7 @@ export default function Sidebar() {
           <article className="flex flex-col items-center gap-8">
             <div className="z-10 rounded-full border-2 border-white shadow-md dark:border-neutral-800">
               <LazyLoadImg
-                src={B}
+                src={imageUrl || B}
                 alt="profile"
                 width={50}
                 height={50}
@@ -43,7 +49,17 @@ export default function Sidebar() {
           <MenuItem key={el.title} {...el} isHover={hover} />
         ))}
       </nav>
-      <Copyright isHover={hover} />
+      <div className="flex flex-col items-center justify-center">
+        <Button
+          className="gap-2 text-neutral-700 dark:text-neutral-300 hover:bg-slate-100 dark:hover:text-black"
+          onClick={() => {
+            signOut({ callbackUrl: "/login" });
+          }}
+        >
+          <LogOut /> {hover && "Sign Out"}
+        </Button>
+        <Copyright isHover={hover} />
+      </div>
     </aside>
   );
 }

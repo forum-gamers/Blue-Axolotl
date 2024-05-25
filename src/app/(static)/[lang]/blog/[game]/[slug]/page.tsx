@@ -17,7 +17,7 @@ export default async function Page({
   if (!post) notFound();
 
   return (
-    <Container data-aos="fade-up" as="section">
+    <Container data-aos="fade-up" as="section" className="flex flex-col">
       <BackBtn url={`/blog/${lang}/${game}`} />
       <hgroup className="flex flex-col justify-start border-b border-dashed border-neutral-600 font-sora font-medium">
         <h2 className="pt-2 text-neutral-600 dark:text-neutral-400 text-2xl">

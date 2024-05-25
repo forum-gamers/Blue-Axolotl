@@ -1,19 +1,86 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["selector"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        "d-xl-blue": "#032030",
+        "d-lg-blue": "#022B42",
+        "d-md-blue": "#003554",
+        "d-sm-blue": "#004D74",
+        "d-base-blue": "#006494",
+        "d-xs-blue": "#006DA4",
+        "xs-blue": "#F0F3FA",
+        "base-blue": "#D5DEEF",
+        "sm-blue": "#B1C9EF",
+        "md-blue": "#8AAEE0",
+        "lg-blue": "#638ECB",
+        "xl-blue": "#395886",
+        "d-t-color": "rgb(212 212 212)",
+        "t-color": "rgb(10 10 10)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
       keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
         wave: {
           "0%": { transform: "rotate(0.0deg)" },
           "10%": { transform: "rotate(14deg)" },
@@ -61,6 +128,8 @@ const config: Config = {
         },
       },
       animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
         "waving-hand": "wave 2s linear infinite",
         "flying-card": "flying 3s infinite normal",
         "badge-pulse": "badge 1.5s ease-out infinite",
@@ -71,27 +140,11 @@ const config: Config = {
         "right-infinite": "rightInfinite 2s linear infinite",
       },
     },
-    colors: {
-      "d-xl-blue": "#032030",
-      "d-lg-blue": "#022B42",
-      "d-md-blue": "#003554",
-      "d-sm-blue": "#004D74",
-      "d-base-blue": "#006494",
-      "d-xs-blue": "#006DA4",
-      "xs-blue": "#F0F3FA",
-      "base-blue": "#D5DEEF",
-      "sm-blue": "#B1C9EF",
-      "md-blue": "#8AAEE0",
-      "lg-blue": "#638ECB",
-      "xl-blue": "#395886",
-      "d-t-color": "rgb(212 212 212)",
-      "t-color": "rgb(10 10 10)",
-    },
     fontFamily: {
       "roboto-condensed": ["var(--robotoCondensed-fon)"],
     },
   },
-  plugins: [],
-  darkMode: ["selector"],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
+
 export default config;
