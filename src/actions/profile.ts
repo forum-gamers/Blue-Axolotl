@@ -1,10 +1,10 @@
-import { USERPROFILEQUERY } from "@/queries/profile";
-import { getContext, Query } from ".";
 import type { UserProfile } from "@/interfaces/profile";
+import { ME } from "@/queries/user/user";
+import { getContext, Query } from ".";
 
 export const getUserProfile = async () => {
   return await Query<{ me: UserProfile }>({
-    query: USERPROFILEQUERY,
+    query: ME,
     context: await getContext(),
   });
 };

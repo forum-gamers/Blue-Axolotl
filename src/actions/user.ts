@@ -3,10 +3,10 @@
 import { redirect, RedirectType } from "next/navigation";
 import { Mutate } from ".";
 import {
+  CHANGEVERIFIED,
   LOGINMUTATION,
   REGISTERMUTATION,
-  VERIFYUSERMUTATION,
-} from "@/mutations/registerLogin";
+} from "@/mutations/user/user";
 
 export const actionLogin = async (formData: FormData) => {
   const email = formData.get("email") as string;
@@ -62,7 +62,7 @@ export const registerAction = async (formData: FormData) => {
 
 export const checkToken = async (token: string) => {
   const { data, errors } = await Mutate({
-    mutation: VERIFYUSERMUTATION,
+    mutation: CHANGEVERIFIED,
     variables: {
       token,
     },

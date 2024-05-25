@@ -5,7 +5,6 @@ import type { CustomSession } from "@/interfaces";
 import type { BaseMutate, BaseQuery } from "@/interfaces/action";
 import { client } from "@/lib/apolloClient";
 import type { ApolloQueryResult, FetchResult } from "@apollo/client";
-import { headers } from "next/headers";
 
 export const Mutate = async <T>({
   mutation,
@@ -34,7 +33,9 @@ export const Query = async <T>({
   });
 
 export const getAccessToken = async () => {
-  return ((await getServerSideSession()) as CustomSession).user?.access_token;
+  const access_token = (await getServerSideSession()) as CustomSession;
+  if (!access_token) return null;
+  return access_token.user?.access_token;
 };
 
 export const getContext = async () => {

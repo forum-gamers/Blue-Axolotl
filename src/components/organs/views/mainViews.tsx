@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import MobileHeader from "../header/mobileHeader";
 import InitPage from "../hoc/initPage";
 import Sidebar from "../sidebar/mainSidebar";
+import { redirect } from "next/navigation";
 const ChatViews = dynamic(() => import("./chatViews"), {
   ssr: false,
   loading: () => <div style={{ bottom: "0", right: "0" }}>Loading...</div>,
@@ -20,9 +21,9 @@ export default async function MainViews({
   readMode,
   children,
 }: MainViewsProps) {
-  const {
-    data: { me },
-  } = await getUserProfile();
+  const { data } = await getUserProfile();
+  if (!data) return redirect("/login");
+  const { me } = data;
   return (
     <InitPage user={me}>
       <Suspense fallback={<Loading />}>
