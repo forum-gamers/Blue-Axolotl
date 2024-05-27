@@ -1,7 +1,7 @@
 "use client";
 
 import Breakline from "@/components/atoms/contents/breakLine";
-import useChat, { CHATTAB } from "@/hooks/useChat";
+import useChat, { CHATTAB } from "@/modules/chat/hooks/useChat";
 import clsxm from "@/lib/clsxm";
 import ChatScroll from "./chatScroll";
 

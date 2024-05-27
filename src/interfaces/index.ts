@@ -28,3 +28,8 @@ export interface CustomSession extends Session {
     accountType?: string | null;
   };
 }
+
+export interface Pagination {
+  page?: number;
+  limit?: number;
+}

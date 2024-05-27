@@ -35,7 +35,7 @@ export const Query = async <T>({
 export const getAccessToken = async () => {
   const access_token = (await getServerSideSession()) as CustomSession;
   if (!access_token) return null;
-  return access_token.user?.access_token;
+  return access_token?.user?.access_token;
 };
 
 export const getContext = async () => {

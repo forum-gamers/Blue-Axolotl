@@ -15,12 +15,12 @@ export type UseScrollProps<
   fetchLimit?: number;
 };
 
-export default function useScroll({
+export default function useScroll<T = any>({
   initialState,
   handler,
   params,
   fetchLimit = 20,
-}: UseScrollProps) {
+}: UseScrollProps<T>) {
   const [data, setData] = useState<typeof initialState>(initialState);
   const [pending, startTransition] = useTransition();
   const ref = useRef<HTMLDivElement>(null);
