@@ -1,15 +1,13 @@
-import type { ChildrenProps } from "@/interfaces";
-import InitPage from "../hoc/initPage";
-import { Suspense } from "react";
 import Loading from "@/components/atoms/loaders/pageLoader";
-import BlogNavbar from "../navbar/blogNavbar";
+import type { ChildrenProps } from "@/interfaces";
+import { Suspense } from "react";
 import BlogFooter from "../footer/blogFooter";
+import InitPage from "../hoc/initPage";
+import BlogNavbar from "../navbar/blogNavbar";
 
-import { SessionProvider } from "@/providers/session.provider";
-
-export default function StaticViews({ children }: ChildrenProps) {
+export default async function StaticViews({ children }: ChildrenProps) {
   return (
-    <InitPage>
+    <InitPage user={null}>
       <Suspense fallback={<Loading />}>
         <BlogNavbar />
         <main className="flex flex-col justify-center h-full w-full no-scrollbar scroll-smooth transition-all duration-300 mx:auto ">

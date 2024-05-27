@@ -9,7 +9,6 @@ import clsxm from "@/lib/clsxm";
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import MobileSidebarMenu from "@/components/molleculs/menu/mobileSidebarMenu";
-
 export default function SidebarProfile() {
   const { toggleMenu, isOpen } = useMenu();
   const isMobile = useMobile();

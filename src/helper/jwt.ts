@@ -9,7 +9,6 @@ export const verifyToken = (token: string | any): JwtPayload => {
   const tokensValue = verify(token, SECRET, {
     algorithms: ["HS256"],
   }) as JwtPayload;
-  console.log(tokensValue);
   return tokensValue;
 };
 

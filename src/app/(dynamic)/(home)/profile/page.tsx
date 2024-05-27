@@ -1,7 +1,9 @@
-// import { getProfile } from "./action";
+import { getServerSideSession } from "@/helper/session";
+import type { CustomSession } from "@/interfaces";
+import { redirect } from "next/navigation";
 
-export default async function ProfileUserPage() {
-  // const userProfile = await getProfile();
-  // console.log(userProfile);
-  return <div>ProfileUserPage</div>;
+export default async function ProfilePage() {
+  const username = ((await getServerSideSession()) as CustomSession).user
+    ?.username;
+  return redirect("/profile/" + username);
 }
