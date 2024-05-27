@@ -24,5 +24,7 @@ export interface CustomSession extends Session {
     id?: string;
     name?: string | null;
     access_token?: string | null;
+    username?: string | null;
+    accountType?: string | null;
   };
 }

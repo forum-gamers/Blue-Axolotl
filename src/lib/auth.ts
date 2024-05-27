@@ -19,27 +19,22 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        console.log(credentials, "masuk ke authorize");
         try {
-          const { id } = verifyToken(credentials?.access_token);
+          const { id, username } = verifyToken(credentials?.access_token);
 
           const user = {
             id,
             name: "user",
             access_token: credentials?.access_token,
+            username,
           };
 
           return user;
         } catch (err) {
-          console.log(err);
           return null;
         }
       },
     }),
-    // googleCredentials({
-    //   clientId: process.env.GOOGLE_OAUTH_CLIENTID as string,
-    //   clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET as string,
-    // }),
   ],
   pages: {
     signIn: "/login",
@@ -64,6 +59,8 @@ export const authOptions: NextAuthOptions = {
     }) {
       session.user.id = token.id;
       session.user.access_token = token.access_token;
+
+      session.user.username = token.username;
       return session;
     },
     jwt({
@@ -81,6 +78,7 @@ export const authOptions: NextAuthOptions = {
     }) {
       if (user) {
         token.id = user.id;
+        token.username = user.username;
       }
       if (account) {
         token.access_token = user?.access_token;

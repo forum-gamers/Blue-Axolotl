@@ -64,9 +64,7 @@ export default function FormRegisterLogin({
           });
           window.history.replaceState({}, "", window.location.pathname);
           router.push("/");
-        } catch (error) {
-          console.log(error, "<~ error");
-        }
+        } catch (error) {}
       })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

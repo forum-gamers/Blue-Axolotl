@@ -13,12 +13,10 @@ import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 import useProfile from "@/hooks/useProfile";
 
-type SidebarProps = {
-  name: string;
-};
 export default function Sidebar() {
   const [hover, setHover] = useState<boolean>(false);
   const { profile } = useProfile();
+  const { imageUrl } = profile;
 
   return (
     <aside
@@ -35,7 +33,7 @@ export default function Sidebar() {
           <article className="flex flex-col items-center gap-8">
             <div className="z-10 rounded-full border-2 border-white shadow-md dark:border-neutral-800">
               <LazyLoadImg
-                src={B}
+                src={imageUrl || B}
                 alt="profile"
                 width={50}
                 height={50}

@@ -3,21 +3,17 @@
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
-export default function DescriptionPost({
-  description,
-}: {
-  description: string;
-}) {
+export default function TruncateCardText({ text }: { text: string }) {
   const [truncate, setTruncate] = useState(false);
 
   useEffect(() => {
-    if (description.length > 60) setTruncate(true);
-  }, [description]);
+    if (text.length > 60) setTruncate(true);
+  }, [text]);
 
   const seeMoreAction = () => setTruncate(false);
   return (
     <>
-      <p className={`${truncate ? "truncate" : ""} text-xs`}>{description}</p>
+      <p className={`${truncate ? "truncate" : ""} text-xs`}>{text}</p>
       {truncate && (
         <Button
           variant="ghost"

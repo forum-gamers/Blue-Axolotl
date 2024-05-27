@@ -4,11 +4,9 @@ import FriendsPosts from "@/components/posts/FriendsPosts";
 import { getServerSideSession } from "@/helper/session";
 
 export default async function Page() {
-  const sessionServer = await getServerSideSession();
-  console.log(sessionServer);
   return (
-    <Container className="w-full flex flex-col gap-10">
-      <div className="w-full flex lg:justify-start lg:w-[90%] xl:w-full xl:justify-center justify-center ">
+    <Container className="w-full flex flex-col gap-10 lg:mt-10 lg:pr-10 lg:max-w-xl xl:max-w-3xl">
+      <div className="w-full max-w-3xl">
         <ModalCreatePost />
       </div>
       <FriendsPosts />
