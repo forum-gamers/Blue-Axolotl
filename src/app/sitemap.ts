@@ -9,5 +9,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "always",
       priority: 1,
     },
+    {
+      url: `${domain}/login`,
+      priority: 2,
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+    },
+    {
+      url: `${domain}/register`,
+      priority: 2,
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+    },
   ];
 }

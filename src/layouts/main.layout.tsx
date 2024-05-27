@@ -7,7 +7,6 @@ import { VercelAnalytics } from "@/providers/vercelAnalytics.providers";
 import { VercelSpeedInsight } from "@/providers/vercelSpeedInsight.provider";
 import "@/styles/globals.css";
 import "aos/dist/aos.css";
-import Head from "next/head";
 import TopLoader from "nextjs-toploader";
 import { Suspense } from "react";
 
@@ -32,10 +31,10 @@ export default function MainLayout({ children, lang }: MainLayoutProps) {
       suppressHydrationWarning
       suppressContentEditableWarning
     >
-      <Head>
+      <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <title>Forum Gamers</title>
-      </Head>
+      </head>
       <body
         className={`${soraSans.className} bg-xl-blue dark:bg-d-xl-blue min-h-screen`}
       >

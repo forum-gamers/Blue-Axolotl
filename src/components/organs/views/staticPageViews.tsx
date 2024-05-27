@@ -5,8 +5,6 @@ import Loading from "@/components/atoms/loaders/pageLoader";
 import BlogNavbar from "../navbar/blogNavbar";
 import BlogFooter from "../footer/blogFooter";
 
-import { SessionProvider } from "@/providers/session.provider";
-
 export default function StaticViews({ children }: ChildrenProps) {
   return (
     <InitPage>

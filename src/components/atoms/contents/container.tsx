@@ -5,7 +5,7 @@ export interface ContainerProps extends ChildrenProps {
   withMarginTop?: boolean;
   as?: "div" | "main" | "section";
   readMode?: boolean;
-  [key: string]: any | undefined;
+  [key: string]: any;
 }
 
 export default function Container({
