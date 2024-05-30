@@ -23,7 +23,7 @@ export default async function MainViews({
   children,
 }: MainViewsProps) {
   const data = await getUserProfile();
-  if (!data) return redirect("/login");
+  // if (!data) return redirect("/login");
 
   return (
     <InitPage user={data}>

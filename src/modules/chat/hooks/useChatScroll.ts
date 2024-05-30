@@ -2,7 +2,11 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import useChat from "./useChat";
 import { getMyRoomChatList } from "../actions/room";
 
-export default function useChatScroll() {
+export interface UseChatScrollProps {
+  limit?: number;
+}
+
+export default function useChatScroll({ limit = 10 }: UseChatScrollProps) {
   const {
     setGroupChats,
     setPrivateChats,
@@ -26,7 +30,11 @@ export default function useChatScroll() {
               case "Group":
                 {
                   if (!groupLimit) {
-                    const data = await getMyRoomChatList({ type: "Group" });
+                    const data = await getMyRoomChatList({
+                      type: "Group",
+                      page: Math.floor(groupChats.length / limit + 1),
+                      limit,
+                    });
                     if (!data.length)
                       setState((prev) => ({ ...prev, groupLimit: true }));
                     setGroupChats(data);
@@ -36,7 +44,11 @@ export default function useChatScroll() {
               case "Private":
                 {
                   if (!privateLimit) {
-                    const data = await getMyRoomChatList({ type: "Private" });
+                    const data = await getMyRoomChatList({
+                      type: "Private",
+                      page: Math.floor(privateChats.length / limit + 1),
+                      limit,
+                    });
                     if (!data.length)
                       setState((prev) => ({ ...prev, privateLimit: true }));
                     setPrivateChats(data);

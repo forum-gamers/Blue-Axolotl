@@ -16,13 +16,13 @@ export default function ArrowBtn({
     <SlArrowDown
       onClick={onOpenClick}
       size={20}
-      className="dark:text-d-xl-blue text-xl-blue cursor-pointer"
+      className="dark:text-d-xl-blue text-xl-blue cursor-pointer hover:bg-sm-blue hover:rounded-2xl"
     />
   ) : (
     <SlArrowUp
       onClick={onCloseClick}
       size={20}
-      className="dark:text-d-xl-blue text-xl-blue cursor-pointer"
+      className="dark:text-d-xl-blue text-xl-blue cursor-pointer hover:bg-sm-blue hover:rounded-2xl"
     />
   );
 }

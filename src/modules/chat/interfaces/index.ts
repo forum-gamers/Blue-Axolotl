@@ -32,7 +32,7 @@ export interface ChatResp {
   sender: UserProfile;
 }
 
-export type ChatTab = "Private" | "Group" | "Room";
+export type ChatTab = "Private" | "Group" | "Room" | "Form";
 
 export interface CacheChat {
   roomId: string;
