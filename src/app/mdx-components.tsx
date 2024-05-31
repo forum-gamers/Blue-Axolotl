@@ -2,9 +2,9 @@
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import CodeBlockViews from "@/components/organs/views/codeBlockViews";
 import type { ChildrenProps } from "@/interfaces";
 import type { MDXComponents } from "mdx/types";
+import CodeBlockViews from "@/components/commons/CodeBlockViews";
 
 const Table = ({ children }: ChildrenProps) => (
   <div className="table-container">

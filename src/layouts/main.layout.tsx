@@ -1,4 +1,4 @@
-import Loading from "@/components/atoms/loaders/pageLoader";
+import Loading from "@/components/commons/loaders/pageLoader";
 import type { ChildrenProps, Language } from "@/interfaces";
 import { soraSans } from "@/lib/font";
 import AppThemeProvider from "@/providers/appTheme.provider";

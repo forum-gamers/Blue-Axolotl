@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { Button } from "../ui/button";
-import { CardHeader } from "../ui/card";
+import { Button } from "@/components/ui/button";
+import { CardHeader } from "@/components/ui/card";
 
 export default function TabPosts() {
   const params = useParams<{ username: string }>();

@@ -1,4 +1,4 @@
-import CardPost from "@/components/posts/CardPost";
+import CardPost from "@/components/commons/posts/CardPost";
 import { CardContent } from "@/components/ui/card";
 import { getUserPostsWithMedia } from "../actions";
 

@@ -1,5 +1,5 @@
-import Container from "@/components/atoms/contents/container";
-import PageHeading from "@/components/atoms/header/pageHeading";
+import Container from "@/components/commons/Container";
+import PageHeading from "@/components/commons/Header/PageHeading";
 import { LANGUAGE } from "@/constants";
 import type { BlogPageProps } from "@/interfaces/blog";
 import type { Metadata } from "next";

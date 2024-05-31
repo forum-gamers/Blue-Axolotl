@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function TruncateCardText({ text }: { text: string }) {
   const [truncate, setTruncate] = useState(false);

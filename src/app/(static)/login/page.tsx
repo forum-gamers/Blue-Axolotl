@@ -1,5 +1,5 @@
-import Container from "@/components/atoms/contents/container";
-import FormRegisterLogin from "@/components/forms/FormRegisterLogin";
+import Container from "@/components/commons/Container";
+import FormRegisterLogin from "@/components/commons/Forms/FormRegisterLogin";
 import { redirect } from "next/navigation";
 import { getServerSideSession } from "@/helper/session";
 import { actionLogin } from "@/actions/user";

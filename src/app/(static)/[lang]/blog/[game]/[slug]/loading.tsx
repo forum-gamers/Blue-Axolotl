@@ -1,4 +1,4 @@
-import Loading from "@/components/atoms/loaders/pageLoader";
+import Loading from "@/components/commons/loaders/pageLoader";
 
 export default function Loader() {
   return <Loading />;
