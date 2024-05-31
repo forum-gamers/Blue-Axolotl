@@ -1,4 +1,4 @@
-import Container from "@/components/atoms/contents/container";
+import Container from "@/components/commons/Container";
 import TruncateCardText from "@/components/commons/TruncateCardText";
 import TabPosts from "@/components/profile/TabPosts";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";

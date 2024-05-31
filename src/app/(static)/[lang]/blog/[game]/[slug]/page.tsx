@@ -1,12 +1,12 @@
-import Container from "@/components/atoms/contents/container";
-import BackBtn from "@/components/molleculs/button/backBtn";
-import BlogViews from "@/components/organs/views/blogViews";
+import Container from "@/components/commons/Container";
+import BackBtn from "@/components/commons/Buttons/BackBtn";
 import type { BlogPageProps } from "@/interfaces/blog";
 import { getAllBlog, getBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import type { Metadata } from "next";
 import { LANGUAGE } from "@/constants";
+import BlogViews from "../../components/BlogViews";
 
 export default async function Page({
   params: { lang, game, slug },

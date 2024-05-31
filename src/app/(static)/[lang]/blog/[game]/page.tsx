@@ -1,8 +1,6 @@
-import Container from "@/components/atoms/contents/container";
-import PageHeading from "@/components/atoms/header/pageHeading";
-import BackBtn from "@/components/molleculs/button/backBtn";
-import GameBlogCard from "@/components/organs/card/gameBlogCard";
-import BlogNoData from "@/components/organs/views/blogNoData";
+import Container from "@/components/commons/Container";
+import PageHeading from "@/components/commons/Header/PageHeading";
+import BackBtn from "@/components/commons/Buttons/BackBtn";
 import { LANGUAGE } from "@/constants";
 import { SUPPORTEDGAME } from "@/constants/game";
 import type { Language } from "@/interfaces";
@@ -12,6 +10,8 @@ import { loadSanityImg } from "@/lib/sanity";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import GameBlogCard from "../components/GameBlogCard";
+import BlogNoData from "../components/BlogNoData";
 
 export default async function Page({ params: { lang, game } }: BlogPageProps) {
   if (!LANGUAGE.includes(lang)) notFound();

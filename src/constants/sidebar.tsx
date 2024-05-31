@@ -1,8 +1,8 @@
 import type { SidebarMenu } from "@/interfaces/components";
-import { BiHomeSmile, BiEditAlt } from "@/components/atoms/icons/bi";
-import { GiChampions } from "@/components/atoms/icons/gi";
-import { AiOutlineTeam } from "@/components/atoms/icons/ai";
-import { IoIosSearch } from "@/components/atoms/icons/io";
+import { BiHomeSmile, BiEditAlt } from "@/components/commons/Icons/bi";
+import { GiChampions } from "@/components/commons/Icons/gi";
+import { AiOutlineTeam } from "@/components/commons/Icons/ai";
+import { IoIosSearch } from "@/components/commons/Icons/io";
 import { User } from "lucide-react";
 
 export const SIDEBAR_MENU: SidebarMenu[] = [

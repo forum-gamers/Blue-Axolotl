@@ -1,7 +1,6 @@
-import Container from "@/components/atoms/contents/container";
-import ModalCreatePost from "@/components/modals/ModalCreatePost";
-import FriendsPosts from "@/components/posts/FriendsPosts";
-import { getServerSideSession } from "@/helper/session";
+import Container from "@/components/commons/Container";
+import ModalCreatePost from "@/components/commons/modals/ModalCreatePost";
+import FriendsPosts from "@/components/commons/posts/FriendsPosts";
 
 export default async function Page() {
   return (

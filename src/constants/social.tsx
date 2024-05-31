@@ -1,4 +1,8 @@
-import { BsGithub, BsInstagram, BsTwitter } from "@/components/atoms/icons/bs";
+import {
+  BsGithub,
+  BsInstagram,
+  BsTwitter,
+} from "@/components/commons/Icons/bs";
 
 export const SOCIALMEDIA = [
   {

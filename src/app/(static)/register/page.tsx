@@ -1,6 +1,6 @@
 import { registerAction } from "@/actions/user";
-import Container from "@/components/atoms/contents/container";
-import FormRegisterLogin from "@/components/forms/FormRegisterLogin";
+import Container from "@/components/commons/Container";
+import FormRegisterLogin from "@/components/commons/Forms/FormRegisterLogin";
 
 export default function RegisterPage() {
   return (

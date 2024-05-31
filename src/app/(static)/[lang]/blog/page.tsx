@@ -1,12 +1,12 @@
-import Container from "@/components/atoms/contents/container";
+import Container from "@/components/commons/Container";
 import type { BlogPageProps, SupportedGame } from "@/interfaces/blog";
-import PageHeading from "@/components/atoms/header/pageHeading";
+import PageHeading from "@/components/commons/Header/PageHeading";
 import { GAMEIMAGE, SUPPORTEDGAME } from "@/constants/game";
-import GameBlogCard from "@/components/organs/card/gameBlogCard";
 import Link from "next/link";
 import { LANGUAGE } from "@/constants";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import GameBlogCard from "./components/GameBlogCard";
 
 export default async function Page({ params: { lang } }: BlogPageProps) {
   if (!LANGUAGE.includes(lang)) notFound();
