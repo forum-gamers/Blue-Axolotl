@@ -59,7 +59,12 @@ export const getFriendList = async ({
 };
 
 export const createChat = async (formData: FormData): Promise<Room> => {
-  console.log("create");
+  const message = formData.get("message");
+  const file = formData.get("base64-file");
+
+  if (file instanceof File) console.log("iye");
+
+  console.log({ message, file });
   return {} as Room;
 };
 

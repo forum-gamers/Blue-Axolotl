@@ -1,5 +1,5 @@
 import { getMyRoomChatList } from "./actions/room";
-import ChatViews from "./components/chatViews";
+import ChatViews from "./components/ChatViews";
 
 export default async function Chat() {
   const rooms = await getMyRoomChatList({ type: "All" });

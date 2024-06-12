@@ -36,7 +36,7 @@ export default function MainLayout({ children, lang }: MainLayoutProps) {
         <title>Forum Gamers</title>
       </head>
       <body
-        className={`${soraSans.className} bg-xl-blue dark:bg-d-xl-blue min-h-screen`}
+        className={`${soraSans.className} bg-xl-blue dark:bg-d-xl-blue min-h-screen text-neutral-800 dark:text-neutral-300`}
       >
         <SessionProvider>
           <Suspense fallback={<Loading />}>

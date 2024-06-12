@@ -23,6 +23,7 @@ export default async function MainViews({
   children,
 }: MainViewsProps) {
   const data = await getUserProfile();
+  //TODO UNCOMMENT
   // if (!data) return redirect("/login");
 
   return (

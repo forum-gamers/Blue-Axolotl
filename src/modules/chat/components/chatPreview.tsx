@@ -7,6 +7,7 @@ import useChat from "../hooks/useChat";
 import { getChatByRoomIds } from "../actions/room";
 import { useState, type MouseEvent } from "react";
 import LoadingWrapper from "@/components/commons/loadingWrapper";
+import { formatInteger } from "@/helper/global";
 
 export interface ChatPreviewProps {
   chat: ChatResp;
@@ -18,27 +19,27 @@ export default function ChatPreview({
   roomId,
 }: ChatPreviewProps) {
   const lastChatDate = new Date(createdAt);
-  const { cacheChats, changeTab, setActiveRoomChat } = useChat();
+  const { changeTab, setActiveRoomChat } = useChat();
   const [loading, setLoading] = useState<boolean>(false);
 
   const onClickRedirect = async (e: MouseEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    const cache = cacheChats.find((el) => el.roomId === roomId);
-    if (cache) setActiveRoomChat(cache.chats);
-    else {
-      const chats = await getChatByRoomIds(roomId);
-      setActiveRoomChat(chats);
-    }
+    const chats = await getChatByRoomIds(roomId);
+    setActiveRoomChat(chats);
+
     changeTab("Room");
     setLoading(false);
   };
 
   return (
-    <article className="bg-xs-blue dark:bg-d-xs-blue h-14 flex flex-row justify-start rounded-md cursor-pointer hover:opacity-50 border border-xl-blue dark:border-x-d-xl-blue">
+    <article className="bg-xs-blue w-[17rem] lg:w-[23rem] dark:bg-d-xs-blue h-14 flex px-2 flex-row justify-start items-center rounded-md cursor-pointer hover:opacity-50 border border-xl-blue dark:border-x-d-xl-blue">
       <LoadingWrapper loading={loading}>
-        <button onClick={onClickRedirect}>
+        <button
+          onClick={onClickRedirect}
+          className="flex flex-row justify-between"
+        >
           <header className="flex items-center justify-center">
             <LazyLoadImg
               src={sender?.imageUrl || DEFAULT_PROFILE_IMG}
@@ -49,15 +50,20 @@ export default function ChatPreview({
               rounded="rounded-full"
             />
           </header>
-          <hgroup className="flex flex-col w-full mx-1 mb-1 pb-1 lg:pb-0 lg:mb-0 lg:my-0 lg:py-0 font-sora">
+          <hgroup className="flex flex-col w-[14rem] lg:w-[20rem] mx-1 mb-1 pb-1 lg:pb-0 lg:mb-0 lg:my-0 lg:py-0 font-sora">
             <div className="flex flex-row justify-between">
-              <h1>{sender.username}</h1>
-              <h6 className="text-xs">{`${lastChatDate.getDate()} ${
+              <h1 className="text-xs font-semibold">{sender.username}</h1>
+              <h6 className="text-xs font-light">{`${formatInteger(
+                lastChatDate.getDate()
+              )} ${formatInteger(
                 lastChatDate.getMonth() + 1
-              } ${lastChatDate.getFullYear()}`}</h6>
+              )} ${lastChatDate.getFullYear()}`}</h6>
             </div>
             <p className="lg:text-sm text-xs">
-              {`${lastChatDate.getMinutes()}.${lastChatDate.getHours()}`} :{" "}
+              {`${lastChatDate.getHours()}.${formatInteger(
+                lastChatDate.getMinutes()
+              )}`}{" "}
+              :{" "}
               {message.length < 20 ? message : message.substring(0, 20) + "..."}
             </p>
           </hgroup>

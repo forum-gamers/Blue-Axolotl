@@ -2,7 +2,7 @@ import { uploadPost } from "@/app/(dynamic)/(home)/action";
 import type { ImageType } from "@/types";
 import Image from "next/image";
 import { useState, type ChangeEvent, type SetStateAction } from "react";
-import { MdAddAPhoto } from "react-icons/md";
+import { MdAddAPhoto } from "@/components/atoms/icons/md";
 
 type FormCreatePostProps = {
   setOpen: (args: boolean) => void;

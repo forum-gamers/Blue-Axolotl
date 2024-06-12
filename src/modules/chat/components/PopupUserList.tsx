@@ -1,27 +1,16 @@
 "use client";
 
-import AddData from "@/components/static/svg/add-folder";
-import { type MouseEventHandler, useState, useTransition } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import useScroll from "@/hooks/useScroll";
 import { getFriendList } from "../actions/room";
 import UserSelectCard from "@/components/commons/userSelectCard";
-import OvalLoader from "@/components/atoms/loaders/ovalLoader";
+import { useTransition, type MouseEventHandler } from "react";
 import useChat from "../hooks/useChat";
+import OvalLoader from "@/components/atoms/loaders/ovalLoader";
+import CryEmoji from "@/components/static/svg/cry-emoji";
 
-export default function CreateChatImg() {
-  const [open, setOpen] = useState<boolean>(false);
+export default function PopupUserList() {
   const [transition, startTransition] = useTransition();
-  const { pending, data, ref } = useScroll({
-    initialState: [],
-    handler: getFriendList,
-  });
-  const { changeTab, setActiveRoom } = useChat();
-
-  const onClickHandler: MouseEventHandler = (e) => {
-    e.preventDefault();
-    setOpen((prev) => !prev);
-  };
+  const { changeTab } = useChat();
 
   const selectCardHandler =
     (id: string): MouseEventHandler =>
@@ -32,28 +21,30 @@ export default function CreateChatImg() {
       });
     };
 
-  return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <div className="cursor-pointer justify-center items-center flex">
-          <button onClick={onClickHandler}>
-            <AddData h="125px" w="125px" />
-          </button>
-        </div>
-      </DialogTrigger>
-      <DialogContent>
-        <section className="flex space-y-2 bg-lg-blue dark:bg-d-lg-blue m-0 p-0 flex-col">
-          {!!data.length &&
-            data.map((el) => (
-              <UserSelectCard
-                onClickHandler={selectCardHandler(el.id)}
-                data={el}
-                key={el.id}
-              />
-            ))}
-          <div ref={ref}>{(pending || transition) && <OvalLoader />}</div>
-        </section>
-      </DialogContent>
-    </Dialog>
+  const { pending, data, ref } = useScroll({
+    initialState: [],
+    handler: getFriendList,
+  });
+
+  return !!data.length ? (
+    <div className="space-y-2 overflow-y-scroll p-2 scroll-smooth no-scrollbar m-0">
+      {data.map(({ username, imageUrl, id }) => (
+        <UserSelectCard
+          onClickHandler={selectCardHandler(id)}
+          username={username}
+          key={id}
+          imageUrl={imageUrl}
+          className="px-4 mx-2 w-[32rem] bg-lg-blue dark:bg-d-lg-blue"
+        />
+      ))}
+      <div ref={ref}>{(pending || transition) && <OvalLoader />}</div>
+    </div>
+  ) : (
+    <figure className="flex flex-col justify-center items-center space-y-2">
+      <CryEmoji width="125px" height="125px" />
+      <figcaption className="text-base font-sora">
+        something went wrong
+      </figcaption>
+    </figure>
   );
 }

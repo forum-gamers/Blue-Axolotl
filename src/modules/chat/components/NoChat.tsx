@@ -1,4 +1,4 @@
-import CreateChatImg from "./PopupUserList";
+import CreateChatImg from "./CreateChatImg";
 
 export default function NoChatData() {
   return (

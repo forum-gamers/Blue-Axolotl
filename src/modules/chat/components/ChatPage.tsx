@@ -1,6 +1,6 @@
 "use client";
 
-import ChatPreview from "./chatPreview";
+import ChatPreview from "./ChatPreview";
 import OvalLoader from "@/components/atoms/loaders/ovalLoader";
 import useChat from "../hooks/useChat";
 import useChatScroll from "../hooks/useChatScroll";
@@ -26,9 +26,202 @@ export default function ChatScroll() {
     <RoomChat />
   ) : (
     <section id="chat-list" className="flex flex-col space-y-2 my-2">
-      {!!data.length ? (
+      {!data.length ? (
         <>
-          {data.map((el) => (
+          {[
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+            {
+              _id: "1",
+              chat: [
+                {
+                  createdAt: new Date(),
+                  message: "lorem ipsum dolor met",
+                  sender: {
+                    username: "guest",
+                  },
+                },
+              ],
+            } as any,
+          ].map((el) => (
             <ChatPreview
               chat={el.chat[el.chat.length - 1]}
               roomId={el._id}

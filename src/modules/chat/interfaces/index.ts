@@ -34,11 +34,6 @@ export interface ChatResp {
 
 export type ChatTab = "Private" | "Group" | "Room" | "Form";
 
-export interface CacheChat {
-  roomId: string;
-  chats: ChatResp[];
-}
-
 export interface GetMyRoomChatListProps extends Pagination {
   type?: ChatTab | "All";
 }

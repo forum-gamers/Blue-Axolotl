@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { CacheChat, ChatResp, ChatTab, Room } from "../interfaces";
+import type { ChatResp, ChatTab, Room } from "../interfaces";
 
 export interface InitialState {
   isOpen: boolean;
@@ -7,7 +7,6 @@ export interface InitialState {
   privateChats: Room[];
   groupChats: Room[];
   activeRoomChat: ChatResp[];
-  cacheChats: CacheChat[];
   activeRoomId: string;
 }
 
@@ -17,7 +16,6 @@ export interface InitialAction {
   setPrivateChats(rooms: Room[]): void;
   setGroupChats(rooms: Room[]): void;
   setActiveRoomChat(chats: ChatResp[]): void;
-  setCache(roomId: string, chats: ChatResp[]): void;
   setActiveRoom(roomId: string): void;
 }
 
@@ -27,7 +25,6 @@ const useChat = create<InitialState & InitialAction>()((set) => ({
   privateChats: [],
   groupChats: [],
   activeRoomChat: [],
-  cacheChats: [],
   activeRoomId: "",
   toggleChat: () => set((prev) => ({ isOpen: !prev.isOpen })),
   changeTab: (tab) => set({ activeTab: tab }),
@@ -36,8 +33,6 @@ const useChat = create<InitialState & InitialAction>()((set) => ({
   setGroupChats: (val) =>
     set((prev) => ({ groupChats: [...prev.groupChats, ...val] })),
   setActiveRoomChat: (val) => set(() => ({ activeRoomChat: val })),
-  setCache: (roomId, chats) =>
-    set((prev) => ({ cacheChats: [...prev.cacheChats, { roomId, chats }] })),
   setActiveRoom: (roomId) => set({ activeRoomId: roomId }),
 }));
 

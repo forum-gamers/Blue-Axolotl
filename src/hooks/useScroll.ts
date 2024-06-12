@@ -45,7 +45,7 @@ export default function useScroll<T = any>({
         threshold: 1.0,
       }
     );
-
+    console.log(ref.current, "<<", observer);
     if (ref.current) observer.observe(ref.current);
 
     return () => observer.disconnect();

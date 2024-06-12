@@ -33,3 +33,9 @@ export interface Pagination {
   page?: number;
   limit?: number;
 }
+
+export interface FileInputValue {
+  file: File;
+  fileReader: string | ArrayBuffer | null;
+  progress: number;
+}
